@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriShield - GeoAI สำหรับเกษตรกร</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-green-700 text-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wide">🌾 AgriShield</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:text-green-200">เกี่ยวกับโครงการ</a>
+                <a href="#how-it-works" class="hover:text-green-200">การทำงาน</a>
+                <a href="#tech" class="hover:text-green-200">เทคโนโลยี</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-green-50 py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-green-800 mb-4">
+                เปลี่ยนการเยียวยาเกษตรกรให้เป็นเรื่องง่ายด้วย GeoAI
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                ระบบประเมินความเสียหายของแปลงเกษตรจากภัยพิบัติแบบอัตโนมัติ ตรวจสอบแม่นยำระดับแปลงผ่านดาวเทียม และแจ้งผลรวดเร็วผ่าน LINE OA
+            </p>
+            <a href="#" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
+                ทดลองใช้งานผ่าน LINE
+            </a>
+        </div>
+    </header>
+
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">ทำไมต้อง AgriShield?</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="p-6 bg-red-50 rounded-xl border border-red-100">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">ปัญหาปัจจุบัน (Pain Point)</h3>
+                    <p class="text-gray-600 text-left">เมื่อเกิดน้ำท่วมหรือภัยแล้ง เกษตรกรต้องรอเจ้าหน้าที่ลงพื้นที่ประเมินความเสียหายนานหลายเดือน กระบวนการมีความซับซ้อน และเกิดความคลาดเคลื่อนในการประเมิน</p>
+                </div>
+                <div class="p-6 bg-green-50 rounded-xl border border-green-100">
+                    <h3 class="text-xl font-bold text-green-700 mb-3">ทางออกของเรา (Solution)</h3>
+                    <p class="text-gray-600 text-left">ใช้ข้อมูลภาพถ่ายดาวเทียม (SAR และ Optical) ร่วมกับโมเดล GeoAI ประเมินความเสียหายทันทีที่ได้รับพิกัด ลดเวลาการทำงานจากหลักเดือนเหลือเพียงหลักนาที</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">ขั้นตอนการทำงาน 3 สเตปง่ายๆ</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">แจ้งพิกัดผ่าน LINE</h3>
+                    <p class="text-gray-500">เกษตรกรแชร์ Location ของแปลงเกษตรผ่าน LINE Official Account สะดวกและคุ้นเคย</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">GeoAI ประมวลผล</h3>
+                    <p class="text-gray-500">ระบบดึงภาพดาวเทียมล่าสุดมาวิเคราะห์ร่องรอยน้ำท่วมขัง และคำนวณพื้นที่เสียหาย</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">แจ้งผลและเยียวยา</h3>
+                    <p class="text-gray-500">ส่งผลการประเมินกลับไปที่ LINE พร้อมส่งต่อข้อมูลเข้าระบบพิจารณาจ่ายเงินชดเชยของรัฐ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="py-16 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">เทคโนโลยีที่ขับเคลื่อนเบื้องหลัง</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">THEOS-2 / Sentinel-1 (SAR)</span>
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">Machine Learning (Crop Classification)</span>
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">LINE Messaging API</span>
+                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">Python FastAPI</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 ทีม AgriShield - พัฒนาสำหรับการแข่งขัน GeoHackathon 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
