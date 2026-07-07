@@ -1,127 +1,267 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoEquity - AI สแกนความเหลื่อมล้ำ</title>
+    <title>GeoEquity - Actionable Geo-Intelligence for Thailand</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Prompt', sans-serif;
         }
-        .hero-pattern {
-            background-color: #1e3a8a;
-            background-image: radial-gradient(#3b82f6 1px, transparent 1px);
-            background-size: 20px 20px;
+        .geo-grid {
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-blue-900 tracking-wide flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-                GeoEquity
+            <div class="text-2xl font-bold text-blue-900 tracking-wide flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                </div>
+                <span>GeoEquity</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-                <a href="#about" class="hover:text-blue-600 transition">ปัญหาของเรา</a>
-                <a href="#solution" class="hover:text-blue-600 transition">โซลูชัน GeoAI</a>
-                <a href="#impact" class="hover:text-blue-600 transition">การนำไปใช้จริง</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#problem" class="hover:text-blue-600 transition">ความสำคัญของปัญหา</a>
+                <a href="#methodology" class="hover:text-blue-600 transition">ระเบียบวิธี GeoAI</a>
+                <a href="#implementation" class="hover:text-blue-600 transition">การนำไปใช้จริง</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero-pattern text-white py-24 text-center relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <span class="bg-blue-800 text-blue-100 px-4 py-1 rounded-full text-sm font-semibold tracking-wide mb-6 inline-block">GeoHackathon 2026</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                มองข้ามตัวเลขจังหวัด <br>เจาะลึกความเหลื่อมล้ำระดับเส้นเลือดฝอย
+    <header class="bg-slate-950 text-white py-28 relative overflow-hidden geo-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-950/50 to-slate-950 z-0"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6 inline-block">
+                Unified Challenge | GeoHackathon 2026
+            </span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight max-w-4xl mx-auto">
+                แปลงพิกเซลจากอวกาศ <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">สู่ความเท่าเทียมระดับเส้นเลือดฝอย</span>
             </h1>
-            <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto font-light">
-                แพลตฟอร์มวิเคราะห์ดัชนีความมั่งคั่ง (Wealth Index) ระดับตารางกิโลเมตร ด้วยข้อมูลดาวเทียม THEOS-2 และแสงสว่างยามค่ำคืน เพื่อช่วยภาครัฐจัดสรรงบประมาณได้อย่างแม่นยำ
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                ระบบวิเคราะห์ดัชนีความมั่งคั่งเชิงพื้นที่ความละเอียดสูง ด้วยการผสานพลังดาวเทียม THEOS-2 และเทคโนโลยี GeoAI เพื่อการตัดสินใจเชิงนโยบายและการจัดสรรงบประมาณที่แม่นยำที่สุดสำหรับประเทศไทย
             </p>
-            <a href="#solution" class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">
-                ดูการทำงานของระบบ
-            </a>
+            <div class="flex justify-center gap-4">
+                <a href="#problem" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-8 rounded-xl shadow-lg shadow-blue-600/20 transition duration-300">
+                    ศึกษาข้อเสนอโครงการ
+                </a>
+            </div>
         </div>
     </header>
 
-    <section id="about" class="py-20 bg-white">
+    <section id="problem" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">ทำไมต้องเปลี่ยนวิธีวัดความเหลื่อมล้ำ?</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
+            <div class="max-w-3xl mx-auto text-center mb-20">
+                <h2 class="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2">Part 1 (30 คะแนน)</h2>
+                <p class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">ความชัดเจนของปัญหาและความสำคัญต่อบริบทไทย</p>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded"></div>
             </div>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                        <span class="text-red-500">✕</span> ข้อจำกัดของระบบเดิม
-                    </h3>
-                    <ul class="space-y-4 text-gray-600">
-                        <li>• ใช้ตัวเลขเฉลี่ยระดับจังหวัด (GPP) ทำให้มองไม่เห็นชุมชนแออัดที่ซ่อนตัวอยู่</li>
-                        <li>• การสำรวจ จปฐ. ใช้เวลานาน ใช้คนเยอะ และข้อมูลมักจะล้าหลัง 1-2 ปี</li>
-                        <li>• การกระจายงบประมาณไม่ตรงจุด (Mismatch) พื้นที่ที่ต้องการจริงกลับไม่ได้งบ</li>
-                    </ul>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">01</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">ความย้อนแย้งของค่าเฉลี่ย</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        ตัวเลขเศรษฐกิจภาพรวมระดับจังหวัด (GPP) มักบดบังความจริงเชิงพื้นที่ ในจังหวัดท่องเที่ยวหรือนิคมอุตสาหกรรมที่ดูรุ่งเรือง มักมีชุมชนแออัดหรือพื้นที่เปาะบางที่แทรกตัวอยู่ ซึ่งระบบสถิติดั้งเดิมไม่สามารถมองเห็นความเหลื่อมล้ำภายในนี้ได้
+                    </p>
                 </div>
-                <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm">
-                    <h3 class="text-2xl font-bold text-blue-900 mb-4 flex items-center gap-2">
-                        <span class="text-green-500">✓</span> การยกระดับด้วย GeoEquity
-                    </h3>
-                    <ul class="space-y-4 text-gray-700">
-                        <li>• อัปเดตข้อมูลอัตโนมัติตามรอบวงโคจรดาวเทียม เร็วและโปร่งใส</li>
-                        <li>• ใช้ AI สแกนลึกถึงระดับบล็อกถนน (Micro-level) ไม่ตกหล่นประชากรแฝง</li>
-                        <li>• มีระบบจำลองผลลัพธ์ (Simulation) เพื่อช่วยตัดสินใจลงทุนโครงสร้างพื้นฐาน</li>
-                    </ul>
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">02</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">ความล่าช้าของข้อมูล (Data Lag)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        การจัดเก็บข้อมูลความจำเป็นพื้นฐาน (จปฐ.) ต้องใช้ทรัพยากรบุคคลลงพื้นที่เดินสำรวจในวงกว้าง ทำให้กระบวนการประมวลผลล้าหลังกว่าสถานการณ์จริง 1–2 ปี ไม่เอื้อต่อการแก้ปัญหาความยากจนในยุคเศรษฐกิจผันผวน
+                    </p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 transition hover:shadow-md">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">03</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">การตกหล่นของประชากรแฝง</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        ระบบสถิติส่วนใหญ่ผูกติดกับฐานข้อมูลทะเบียนบ้าน ทำให้กลุ่มประชากรแฝง แรงงานย้ายถิ่น หรือคนจนเมืองในชุมชนไม่เป็นทางการ ตกหล่นจากระบบตาข่ายความช่วยเหลือทางสังคม (Social Safety Net) ของรัฐบาล
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-blue-900 text-white p-8 md:p-12 rounded-3xl mb-16 shadow-xl shadow-blue-950/10">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">การเชื่อมโยงกับบริบทประเทศไทย</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed mb-4">
+                            ประเทศไทยเผชิญปัญหาการกระจายงบประมาณพัฒนาที่เกิดภาวะ Mismatch (จัดสรรไม่ตรงจุดจริง) ตัวอย่างที่เห็นได้ชัดคือในเขตเศรษฐกิจพิเศษและจังหวัดท่องเที่ยวใหญ่ เช่น <b>ภูเก็ต ชลบุรี ระยอง และเชียงใหม่</b>
+                        </p>
+                        <p class="text-blue-100 text-sm leading-relaxed">
+                            จังหวัดเหล่านี้มีตัวเลขจีดีพีเติบโตสูง แต่หากสแกนพิกเซลลึกลงไปจะพบพื้นที่ที่ไม่มีแสงไฟยามค่ำคืน ขาดพื้นที่สีเขียว และสิ่งปลูกสร้างเสื่อมโทรม โครงการ GeoEquity จึงเข้ามาทำหน้าที่เป็น <b>"ตาข่ายอวกาศ"</b> เพื่อดักจับและชี้เป้าความยากจนระดับเส้นเลือดฝอยที่ระบบเดิมมองข้าม
+                        </p>
+                    </div>
+                    <div class="bg-blue-950/50 p-6 rounded-2xl border border-blue-800">
+                        <h4 class="font-semibold text-blue-400 mb-4 uppercase text-xs tracking-wider">กลุ่มผู้ได้รับประโยชน์ (Beneficiaries)</h4>
+                        <div class="space-y-4 text-xs">
+                            <div class="flex gap-3">
+                                <span class="text-green-400 font-bold">✓</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">ผู้กำหนดนโยบายระดับชาติ (สภาพัฒน์ฯ / สำนักงบประมาณ)</strong>
+                                    <span class="text-blue-200">เปลี่ยนการจัดสรรงบประมาณแบบหว่านแห สู่การทำ Precision Budgeting แม่นยำสูง</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-green-400 font-bold">✓</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">องค์กรปกครองส่วนท้องถิ่น (อปท.)</strong>
+                                    <span class="text-blue-200">ได้รับแดชบอร์ดชี้เป้าความยากจนที่อัปเดตทุกไตรมาสเพื่อส่งความช่วยเหลือเชิงรุก</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="text-green-400 font-bold">✓</span>
+                                <div>
+                                    <strong class="text-white block mb-0.5">ประชาชนกลุ่มเปราะบางและประชากรแฝง</strong>
+                                    <span class="text-blue-200">ได้รับการเข้าถึงสวัสดิการและสาธารณูปโภคขั้นพื้นฐานอย่างเท่าเทียม ไม่ตกหล่นจากระบบ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="solution" class="py-20 bg-gray-50">
+    <section id="methodology" class="py-24 bg-slate-100 border-y border-slate-200/60">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">กระบวนการทำงานของ GeoAI</h2>
-                <p class="text-gray-500">แปลงพิกเซลจากอวกาศให้กลายเป็นตัวชี้วัดทางเศรษฐกิจและสังคม</p>
+            <div class="max-w-3xl mx-auto text-center mb-20">
+                <h2 class="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2">Part 2 (30 คะแนน)</h2>
+                <p class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">แนวทาง GeoAI และระเบียบวิธีที่เสนอ</p>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded"></div>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-blue-400">
-                    <div class="text-blue-600 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">1. รวบรวมข้อมูลเชิงพื้นที่</h3>
-                    <p class="text-gray-600 text-sm">ผสานข้อมูลภาพ Optical จาก <b>THEOS-2</b> (ดูความหนาแน่นและสภาพหลังคา), ข้อมูล <b>VIIRS</b> (แสงสว่างยามค่ำคืน) และ <b>OSM</b> (ระยะห่างจากสาธารณูปโภค)</p>
+
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-6 bg-blue-600 rounded-sm inline-block"></span> 1. การเลือกใช้และการจัดการข้อมูล (Data Pipeline)
+            </h3>
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">THEOS-2 (Optical)</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">ภาพถ่ายความละเอียดสูง 50 ซม. ใช้ตรวจจับความหนาแน่นสิ่งปลูกสร้าง, รูปแบบการผังเมือง และแยกแยะประเภทวัสดุหลังคาเพื่อประเมินสภาพความเป็นอยู่</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-indigo-400">
-                    <div class="text-indigo-600 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">2. วิเคราะห์ด้วย Machine Learning</h3>
-                    <p class="text-gray-600 text-sm">เทรนโมเดล AI (Random Forest / CNNs) เพื่อประเมินดัชนีความมั่งคั่ง (Wealth Index) จากลักษณะทางกายภาพที่ปรากฏบนภาพถ่าย</p>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">VIIRS (Nighttime Light)</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">ข้อมูลความเข้มของแสงสว่างในเวลากลางคืนเพื่อใช้เป็น Proxy ตัวแทนวัดระดับกิจกรรมทางเศรษฐกิจ การบริโภค และการเข้าถึงกระแสไฟฟ้า</p>
                 </div>
-                
-                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-green-400">
-                    <div class="text-green-600 mb-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">3. แดชบอร์ดสนับสนุนนโยบาย</h3>
-                    <p class="text-gray-600 text-sm">แสดงผลเป็นแผนที่ความร้อน (Heatmap) จัดลำดับความสำคัญพื้นที่เปราะบาง เพื่อชี้เป้าการลงทุนและจัดสรรงบประมาณของรัฐ</p>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-cyan-500">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">Sentinel-2 (Multispectral)</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">ดึงดัชนีพืชพรรณ (NDVI) และพื้นที่สิ่งปลูกสร้าง (NDBI) เพื่อวิเคราะห์สัดส่วนพื้นที่สีเขียวในเขตเมือง สัมพันธ์กับคุณภาพชีวิตและราคาที่ดิน</p>
                 </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500">
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">OpenStreetMap (OSM)</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">คำนวณดัชนีการเข้าถึง (Accessibility Index) วัดระยะห่างทางกายภาพจากศูนย์กลางชุมชนไปยังโรงพยาบาล โรงเรียน และโครงสร้างพื้นฐาน</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <span class="w-2.5 h-6 bg-blue-600 rounded-sm inline-block"></span> 2. กระบวนการประมวลผลเทรนโมเดล GeoAI
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h4 class="text-base font-bold text-blue-600 mb-3 uppercase tracking-wider">Step 1: Image Feature Extraction</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        ระบบทำการแบ่งพื้นที่ประเทศไทยออกเป็นตารางกริดขนาด 1x1 ตารางกิโลเมตร จากนั้นนำภาพถ่ายจากดาวเทียมมาเข้าสู่โมเดลโครงข่ายประสาทเทียมแบบคอนโวลูชัน <b>(Convolutional Neural Networks - CNNs)</b> เช่น ResNet-50 ที่ผ่านการทำ Transfer Learning เพื่อสกัดลักษณะทางกายภาพให้ออกมาเป็น Feature Vectors หรือ Embeddings
+                    </p>
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded">ResNet-50 / VGG16</span>
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded">Feature Embedding</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h4 class="text-base font-bold text-indigo-600 mb-3 uppercase tracking-wider">Step 2: Multi-modal Data Fusion</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        นำชุดตัวเลขเวกเตอร์ที่ได้จากภาพถ่ายดาวเทียม มาทำการเชื่อมรวม (Concatenate) เข้ากับข้อมูลรูปแบบตาราง (Tabular Data) ซึ่งได้แก่ค่าความเข้มแสงไฟกลางคืน (VIIRS) และดัชนีระยะห่างของสาธารณูปโภค (OSM) แล้วส่งต่อให้โมเดล <b>XGBoost / Random Forest Regressor</b> ทำการพยากรณ์คะแนนดัชนีความมั่งคั่ง
+                    </p>
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded">XGBoost Regressor</span>
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded">Data Concatenation</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 text-slate-100 p-8 rounded-2xl">
+                <h4 class="text-lg font-bold text-white mb-3">การสอบเทียบโมเดลและความแม่นยำ (Ground Truth & Calibration)</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                    เพื่อควบคุมความถูกต้องทางวิชาการ แพลตฟอร์มจะใช้ข้อมูลความยากจนจาก <b>จปฐ. และ TPMAP ระดับหมู่บ้าน/ตำบล มาเป็นข้อมูลสอนหลัก (Ground Truth Labels)</b> และใช้ระเบียบวิธี K-Fold Cross Validation ในการทดสอบโมเดล โดยวัดประสิทธิภาพผ่านค่าดัชนีทางสถิติ R-Squared ($R^2$) และ RMSE (Root Mean Square Error) เพื่อให้มั่นใจว่าโมเดลมีความแม่นยำสูงก่อนนำไปคาดการณ์พื้นที่ที่ไม่มีการเดินสำรวจ
+                </p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <section id="implementation" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-xl font-bold text-white mb-2">GeoEquity Team</div>
-            <p class="text-sm">Actionable Geo-Intelligence for Thailand's Future.</p>
-            <div class="mt-6 text-xs text-gray-500">
-                &copy; 2026 จัดทำขึ้นเพื่อการแข่งขัน GeoHackathon 2026
+            <div class="max-w-3xl mx-auto text-center mb-20">
+                <h2 class="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2">Part 3 (20 คะแนน)</h2>
+                <p class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">ความเป็นไปได้ของผลลัพธ์และการนำไปใช้จริง</p>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded"></div>
+            </div>
+
+            <div class="mb-16">
+                <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <span class="w-2.5 h-6 bg-blue-600 rounded-sm inline-block"></span> ผลลัพธ์ในรูปแบบ Actionable Geo-Intelligence
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-blue-50/50 rounded-xl border border-blue-100/60">
+                        <h4 class="font-bold text-slate-900 mb-2">Micro-level Wealth Index Layer</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">ชั้นข้อมูลดัชนีความยากจนและความมั่งคั่งความละเอียดสูงระดับ 1 ตร.กม. ในรูปแบบ GeoJSON/Shapefile ที่พร้อมเชื่อมต่อเข้ากับระบบ GIS เดิมของภาครัฐได้ทันที</p>
+                    </div>
+                    <div class="p-6 bg-blue-50/50 rounded-xl border border-blue-100/60">
+                        <h4 class="font-bold text-slate-900 mb-2">Vulnerability Priority Score</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">ระบบ AI ทำการคำนวณและจัดอันดับความจำเป็นเร่งด่วนของพื้นที่เชิงซ้อน ช่วยให้ท้องถิ่นชี้เป้าชุมชนที่ต้องเข้าช่วยเหลือด้านสาธารณูปโภคก่อน-หลังได้อย่างเป็นระบบ</p>
+                    </div>
+                    <div class="p-6 bg-blue-50/50 rounded-xl border border-blue-100/60">
+                        <h4 class="font-bold text-slate-900 mb-2">Policy Simulation Matrix</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">แผงควบคุมอัจฉริยะ (Simulation Dashboard) ที่ช่วยจำลองผลลัพธ์ว่า หากรัฐเลือกตัดถนนหรือสร้างโรงพยาบาล ณ พิกัดดังกล่าว จะยกระดับเศรษฐกิจของกลุ่มเปราะบางได้เท่าใด</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-slate-100 bg-slate-50/60 p-8 rounded-2xl mb-16">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">แนวทางการนำไปกำหนดนโยบายและการบริหารราชการแผ่นดิน</h3>
+                <div class="space-y-6 text-sm">
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-blue-600 text-white rounded-lg p-2 font-bold text-xs">01</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-1">การปฏิรูปจัดสรรงบประมาณพัฒนาพื้นที่ (Precision Budgeting)</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed">สำนักงบประมาณสามารถอ้างอิงดัชนี GeoEquity ในการอนุมัติงบประมาณรายปีแก่กลุ่มจังหวัด โดยปรับเปลี่ยนเกณฑ์การพิจารณาตามความจำเป็นจริงในระดับไมโครแทนการพิจารณาตามโควตาประชากรแบบเดิม</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-blue-600 text-white rounded-lg p-2 font-bold text-xs">02</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-1">การวางผังเมืองและสาธารณูปโภคเชิงรุก (Proactive Regional Planning)</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed">กรมโยธาธิการและผังเมืองสามารถใช้ผลลัพธ์แบบจำลองในการพิจารณากำหนดขอบเขตผังเมืองและวางตำแหน่งจุดก่อสร้างโครงสร้างพื้นฐานเพื่อกระจายความเจริญและบริการสาธารณะเข้าสู่ชุมชนที่ขาดแคลนอย่างทั่วถึง</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="bg-blue-600 text-white rounded-lg p-2 font-bold text-xs">03</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 mb-1">การประเมินและติดตามผลสัมฤทธิ์โครงการรัฐ (Evidence-based Evaluation)</h4>
+                            <p class="text-slate-600 text-xs leading-relaxed">ใช้เปรียบเทียบภาพถ่ายดาวเทียมย้อนหลังและดัชนีเศรษฐกิจก่อน-หลังดำเนินโครงการพัฒนาของรัฐ (เช่น เขตเศรษฐกิจพิเศษ) เพื่อประเมินผลสัมฤทธิ์ (Performance) ว่าเม็ดเงินสามารถยกระดับเศรษฐกิจฐานรากได้จริงหรือไม่</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white p-8 rounded-2xl text-center">
+                <h4 class="text-lg font-bold mb-2">ความเป็นไปได้ทางเทคนิคและการขยายผล (Scalability)</h4>
+                <p class="text-slate-300 text-xs max-w-3xl mx-auto leading-relaxed">
+                    เนื่องจากแพลตฟอร์มนี้ทำงานบนฐานข้อมูลเปิด (Open Data) และใช้ข้อมูลดาวเทียมสัญชาติไทยอย่าง <b>THEOS-2</b> ร่วมกับโมเดล GeoAI ที่ประมวลผลอัตโนมัติ (Automated Pipeline) ทำให้เมื่อระบบผ่านการทดสอบเสร็จสิ้นในพื้นที่นำร่อง จะสามารถขยายผลการพยากรณ์และประเมินผลครอบคลุมพื้นที่ทั้ง 77 จังหวัดทั่วประเทศไทยได้ทันทีภายในระยะเวลาอันสั้นโดยไม่ต้องพึ่งพาทรัพยากรมนุษย์ลงพื้นที่สำรวจใหม่
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-12 text-center border-t border-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="text-xl font-bold text-white mb-2 tracking-wide">GeoEquity Team</div>
+            <p class="text-xs mb-6 font-light">Actionable Geo-Intelligence for Transforming Thailand's Socio-economic Landscape</p>
+            <div class="text-2xs text-slate-600">
+                &copy; 2026 พัฒนาและออกแบบเพื่อใช้สำหรับการแข่งขัน GeoHackathon 2026. ข้อมูลอ้างอิงระบบดาวเทียม THEOS-2 และชุดข้อมูลสาธารณะ
             </div>
         </div>
     </footer>
