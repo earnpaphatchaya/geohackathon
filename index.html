@@ -3,96 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgriShield - GeoAI สำหรับเกษตรกร</title>
+    <title>GeoEquity - AI สแกนความเหลื่อมล้ำ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Prompt', sans-serif;
+        }
+        .hero-pattern {
+            background-color: #1e3a8a;
+            background-image: radial-gradient(#3b82f6 1px, transparent 1px);
+            background-size: 20px 20px;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <nav class="bg-green-700 text-white shadow-md">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-wide">🌾 AgriShield</div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="hover:text-green-200">เกี่ยวกับโครงการ</a>
-                <a href="#how-it-works" class="hover:text-green-200">การทำงาน</a>
-                <a href="#tech" class="hover:text-green-200">เทคโนโลยี</a>
+            <div class="text-2xl font-bold text-blue-900 tracking-wide flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+                GeoEquity
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-blue-600 transition">ปัญหาของเรา</a>
+                <a href="#solution" class="hover:text-blue-600 transition">โซลูชัน GeoAI</a>
+                <a href="#impact" class="hover:text-blue-600 transition">การนำไปใช้จริง</a>
             </div>
         </div>
     </nav>
 
-    <header class="bg-green-50 py-20 text-center">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl md:text-5xl font-bold text-green-800 mb-4">
-                เปลี่ยนการเยียวยาเกษตรกรให้เป็นเรื่องง่ายด้วย GeoAI
+    <header class="hero-pattern text-white py-24 text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <span class="bg-blue-800 text-blue-100 px-4 py-1 rounded-full text-sm font-semibold tracking-wide mb-6 inline-block">GeoHackathon 2026</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                มองข้ามตัวเลขจังหวัด <br>เจาะลึกความเหลื่อมล้ำระดับเส้นเลือดฝอย
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                ระบบประเมินความเสียหายของแปลงเกษตรจากภัยพิบัติแบบอัตโนมัติ ตรวจสอบแม่นยำระดับแปลงผ่านดาวเทียม และแจ้งผลรวดเร็วผ่าน LINE OA
+            <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-3xl mx-auto font-light">
+                แพลตฟอร์มวิเคราะห์ดัชนีความมั่งคั่ง (Wealth Index) ระดับตารางกิโลเมตร ด้วยข้อมูลดาวเทียม THEOS-2 และแสงสว่างยามค่ำคืน เพื่อช่วยภาครัฐจัดสรรงบประมาณได้อย่างแม่นยำ
             </p>
-            <a href="#" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
-                ทดลองใช้งานผ่าน LINE
+            <a href="#solution" class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300">
+                ดูการทำงานของระบบ
             </a>
         </div>
     </header>
 
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-12">ทำไมต้อง AgriShield?</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="p-6 bg-red-50 rounded-xl border border-red-100">
-                    <h3 class="text-xl font-bold text-red-600 mb-3">ปัญหาปัจจุบัน (Pain Point)</h3>
-                    <p class="text-gray-600 text-left">เมื่อเกิดน้ำท่วมหรือภัยแล้ง เกษตรกรต้องรอเจ้าหน้าที่ลงพื้นที่ประเมินความเสียหายนานหลายเดือน กระบวนการมีความซับซ้อน และเกิดความคลาดเคลื่อนในการประเมิน</p>
-                </div>
-                <div class="p-6 bg-green-50 rounded-xl border border-green-100">
-                    <h3 class="text-xl font-bold text-green-700 mb-3">ทางออกของเรา (Solution)</h3>
-                    <p class="text-gray-600 text-left">ใช้ข้อมูลภาพถ่ายดาวเทียม (SAR และ Optical) ร่วมกับโมเดล GeoAI ประเมินความเสียหายทันทีที่ได้รับพิกัด ลดเวลาการทำงานจากหลักเดือนเหลือเพียงหลักนาที</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="how-it-works" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-12">ขั้นตอนการทำงาน 3 สเตปง่ายๆ</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                    <h3 class="text-xl font-bold mb-2">แจ้งพิกัดผ่าน LINE</h3>
-                    <p class="text-gray-500">เกษตรกรแชร์ Location ของแปลงเกษตรผ่าน LINE Official Account สะดวกและคุ้นเคย</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                    <h3 class="text-xl font-bold mb-2">GeoAI ประมวลผล</h3>
-                    <p class="text-gray-500">ระบบดึงภาพดาวเทียมล่าสุดมาวิเคราะห์ร่องรอยน้ำท่วมขัง และคำนวณพื้นที่เสียหาย</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                    <h3 class="text-xl font-bold mb-2">แจ้งผลและเยียวยา</h3>
-                    <p class="text-gray-500">ส่งผลการประเมินกลับไปที่ LINE พร้อมส่งต่อข้อมูลเข้าระบบพิจารณาจ่ายเงินชดเชยของรัฐ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tech" class="py-16 bg-white border-t border-gray-200">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">เทคโนโลยีที่ขับเคลื่อนเบื้องหลัง</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">THEOS-2 / Sentinel-1 (SAR)</span>
-                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">Machine Learning (Crop Classification)</span>
-                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">LINE Messaging API</span>
-                <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-semibold">Python FastAPI</span>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <p>&copy; 2026 ทีม AgriShield - พัฒนาสำหรับการแข่งขัน GeoHackathon 2026</p>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">ทำไมต้องเปลี่ยนวิธีวัดความเหลื่อมล้ำ?</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <span class="text-red-500">✕</span> ข้อจำกัดของระบบเดิม
+                    </h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li>• ใช้ตัวเลขเฉลี่ยระดับจังหวัด (GPP) ทำให้มองไม่เห็นชุมชนแออัดที่ซ่อนตัวอยู่</li>
+                        <li>• การสำรวจ จปฐ. ใช้เวลานาน ใช้คนเยอะ และข้อมูลมักจะล้าหลัง 1-2 ปี</li>
+                        <li>• การกระจายงบประมาณไม่ตรงจุด (Mismatch) พื้นที่ที่ต้องการจริงกลับไม่ได้งบ</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                        <span class="text-green-500">✓</span> การยกระดับด้วย GeoEquity
+                    </h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li>• อัปเดตข้อมูลอัตโนมัติตามรอบวงโคจรดาวเทียม เร็วและโปร่งใส</li>
+                        <li>• ใช้ AI สแกนลึกถึงระดับบล็อกถนน (Micro-level) ไม่ตกหล่นประชากรแฝง</li>
+                        <li>• มีระบบจำลองผลลัพธ์ (Simulation) เพื่อช่วยตัดสินใจลงทุนโครงสร้างพื้นฐาน</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">กระบวนการทำงานของ GeoAI</h2>
+                <p class="text-gray-500">แปลงพิกเซลจากอวกาศให้กลายเป็นตัวชี้วัดทางเศรษฐกิจและสังคม</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-blue-400">
+                    <div class="text-blue-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">1. รวบรวมข้อมูลเชิงพื้นที่</h3>
+                    <p class="text-gray-600 text-sm">ผสานข้อมูลภาพ Optical จาก <b>THEOS-2</b> (ดูความหนาแน่นและสภาพหลังคา), ข้อมูล <b>VIIRS</b> (แสงสว่างยามค่ำคืน) และ <b>OSM</b> (ระยะห่างจากสาธารณูปโภค)</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-indigo-400">
+                    <div class="text-indigo-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">2. วิเคราะห์ด้วย Machine Learning</h3>
+                    <p class="text-gray-600 text-sm">เทรนโมเดล AI (Random Forest / CNNs) เพื่อประเมินดัชนีความมั่งคั่ง (Wealth Index) จากลักษณะทางกายภาพที่ปรากฏบนภาพถ่าย</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-green-400">
+                    <div class="text-green-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">3. แดชบอร์ดสนับสนุนนโยบาย</h3>
+                    <p class="text-gray-600 text-sm">แสดงผลเป็นแผนที่ความร้อน (Heatmap) จัดลำดับความสำคัญพื้นที่เปราะบาง เพื่อชี้เป้าการลงทุนและจัดสรรงบประมาณของรัฐ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+        <div class="container mx-auto px-6">
+            <div class="text-xl font-bold text-white mb-2">GeoEquity Team</div>
+            <p class="text-sm">Actionable Geo-Intelligence for Thailand's Future.</p>
+            <div class="mt-6 text-xs text-gray-500">
+                &copy; 2026 จัดทำขึ้นเพื่อการแข่งขัน GeoHackathon 2026
+            </div>
         </div>
     </footer>
 
