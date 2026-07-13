@@ -1,695 +1,1074 @@
 <!DOCTYPE html>
-<html lang="th" class="scroll-smooth">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GeoEquity ระบบวิเคราะห์ความเหลื่อมล้ำเชิงพื้นที่ด้วยข้อมูลดาวเทียมและ GeoAI" />
-  <meta name="theme-color" content="#0b1530" />
-  <title>GeoEquity — GeoAI เพื่อความเท่าเทียมของประเทศไทย</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: '#0b1530',
-            primary: '#3769f6',
-            mint: '#37d4b4',
-            skysoft: '#eef5ff'
-          },
-          boxShadow: {
-            soft: '0 20px 60px rgba(15, 31, 70, .10)',
-            card: '0 14px 40px rgba(15, 31, 70, .08)'
-          }
-        }
-      }
-    }
-  </script>
-
+  <meta name="description" content="GeoEquity — แพลตฟอร์ม GeoAI สแกนความเหลื่อมล้ำระดับเส้นเลือดฝอย เพื่อการจัดสรรงบประมาณเชิงรุก" />
+  <meta name="theme-color" content="#071a2f" />
+  <title>GeoEquity | ข้อเสนอโครงการ GeoHackathon 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #0b1530;
-      --muted: #62708d;
-      --primary: #3769f6;
-      --mint: #37d4b4;
-      --surface: #f6f9ff;
+      --navy-950: #04111f;
+      --navy-900: #071a2f;
+      --navy-800: #0b2742;
+      --blue-600: #1777e8;
+      --blue-500: #2d8cff;
+      --cyan-400: #34d6e8;
+      --cyan-200: #a9f1f7;
+      --green-500: #24b67a;
+      --amber-400: #f5b941;
+      --red-400: #f56f76;
+      --ink-900: #102033;
+      --ink-700: #34465a;
+      --ink-500: #6a7c8f;
+      --line: #dfe8f1;
+      --surface: #f5f9fc;
+      --white: #ffffff;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --shadow-lg: 0 28px 70px rgba(8, 41, 73, .14);
+      --shadow-md: 0 16px 40px rgba(8, 41, 73, .10);
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
-
-    html { scroll-padding-top: 92px; }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Noto Sans Thai', sans-serif;
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--ink);
+      font-family: "Noto Sans Thai", "Leelawadee UI", Tahoma, sans-serif;
+      color: var(--ink-900);
       background: #fff;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-
-    h1, h2, h3, h4, .font-display {
-      font-family: 'Inter', 'Noto Sans Thai', sans-serif;
-      line-height: 1.28;
-      letter-spacing: -0.025em;
-    }
-
-    p { color: var(--muted); }
-
-    .hero-grid {
-      background-image:
-        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
-      background-size: 44px 44px;
-      -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
-      mask-image: linear-gradient(to bottom, black, transparent 90%);
-    }
-
-    .map-lines {
-      background:
-        radial-gradient(circle at 16% 20%, rgba(55, 212, 180, .26), transparent 25%),
-        radial-gradient(circle at 82% 12%, rgba(55, 105, 246, .30), transparent 30%),
-        radial-gradient(circle at 70% 80%, rgba(124, 102, 255, .24), transparent 26%);
-    }
-
-    .glass {
-      background: rgba(255, 255, 255, .075);
-      border: 1px solid rgba(255, 255, 255, .14);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 30px 80px rgba(0,0,0,.18);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .section-kicker {
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .section { padding: 104px 0; position: relative; }
+    .section-soft { background: var(--surface); }
+    .section-dark { background: var(--navy-900); color: white; }
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: .6rem;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: .78rem;
-      letter-spacing: .12em;
+      gap: 10px;
+      font: 800 12px/1 "Manrope", sans-serif;
+      letter-spacing: .16em;
       text-transform: uppercase;
+      color: var(--blue-600);
+      margin-bottom: 16px;
     }
-
-    .section-kicker::before {
-      content: '';
-      width: 28px;
+    .eyebrow::before {
+      content: "";
+      width: 34px;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--primary), var(--mint));
+      background: currentColor;
     }
-
-    .soft-card {
-      border: 1px solid #e7edfa;
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 12px 34px rgba(26, 45, 88, .065);
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 {
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: .98;
+      letter-spacing: -.05em;
+      margin-bottom: 24px;
     }
-
-    .soft-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 22px 55px rgba(26, 45, 88, .11);
-      border-color: #d4e0ff;
+    h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      margin-bottom: 18px;
     }
+    h3 {
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    p { color: var(--ink-700); }
+    .lead {
+      font-size: clamp(18px, 2vw, 22px);
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+    .section-dark p { color: rgba(255,255,255,.72); }
+    .section-head { margin-bottom: 50px; }
+    .section-head.center { max-width: 820px; margin: 0 auto 50px; text-align: center; }
+    .section-head.center .eyebrow { justify-content: center; }
 
-    .number-badge {
+    /* Navigation */
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: .3s ease;
+    }
+    .topbar.scrolled {
+      padding: 10px 0;
+      background: rgba(4,17,31,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 42px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(145deg, var(--cyan-400), var(--blue-500));
+      box-shadow: 0 12px 30px rgba(52,214,232,.28);
+    }
+    .brand-mark svg { width: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+      font-weight: 600;
+      transition: .2s;
+    }
+    .nav-links a:hover { color: white; }
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      color: white !important;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+    }
+    .menu-btn {
+      display: none;
       width: 46px;
       height: 46px;
-      display: inline-grid;
-      place-items: center;
-      border-radius: 15px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 800;
-      color: #2756df;
-      background: linear-gradient(145deg, #eef4ff, #e3eeff);
-      border: 1px solid #dbe7ff;
+      border: 0;
+      border-radius: 14px;
+      color: white;
+      background: rgba(255,255,255,.1);
+      cursor: pointer;
     }
 
-    .gradient-text {
-      background: linear-gradient(95deg, #91b5ff 0%, #61e2c6 48%, #d0c6ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    /* Hero */
+    .hero {
+      min-height: 820px;
+      padding: 150px 0 90px;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(45,140,255,.27), transparent 32%),
+        radial-gradient(circle at 55% 80%, rgba(52,214,232,.12), transparent 32%),
+        linear-gradient(145deg, #03101d 0%, #071a2f 54%, #0a2f50 100%);
+      position: relative;
+      overflow: hidden;
     }
-
-    .data-flow::after {
-      content: '';
+    .hero::before {
+      content: "";
       position: absolute;
-      top: 22px;
+      inset: 0;
+      opacity: .24;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 84%);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--cyan-200);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan-400);
+      box-shadow: 0 0 0 0 rgba(52,214,232,.5);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 10px rgba(52,214,232,0); }
+      100% { box-shadow: 0 0 0 0 rgba(52,214,232,0); }
+    }
+    .hero h1 span { color: var(--cyan-400); }
+    .hero-sub {
+      font-size: clamp(18px, 2vw, 22px);
+      color: rgba(255,255,255,.72);
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 46px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: var(--navy-950);
+      background: linear-gradient(135deg, var(--cyan-400), #86f0ff);
+      box-shadow: 0 14px 35px rgba(52,214,232,.22);
+    }
+    .btn-secondary {
+      color: white;
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.07);
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 620px;
+    }
+    .metric {
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(12px);
+    }
+    .metric strong {
+      display: block;
+      font: 800 clamp(22px, 3vw, 32px)/1 "Manrope", sans-serif;
+      color: white;
+      margin-bottom: 7px;
+    }
+    .metric span { color: rgba(255,255,255,.58); font-size: 13px; }
+
+    .hero-visual { position: relative; min-height: 590px; }
+    .orbit {
+      position: absolute;
+      width: 520px;
+      height: 520px;
       left: 50%;
-      right: -50%;
+      top: 50%;
+      transform: translate(-50%,-50%) rotate(-14deg);
+      border: 1px solid rgba(52,214,232,.24);
+      border-radius: 50%;
+      animation: rotate 26s linear infinite;
+    }
+    .orbit::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+      top: 57px;
+      left: 78px;
+      background: var(--cyan-400);
+      box-shadow: 0 0 22px var(--cyan-400);
+    }
+    @keyframes rotate { to { transform: translate(-50%,-50%) rotate(346deg); } }
+    .visual-card {
+      position: absolute;
+      inset: 35px 0 35px 35px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(160deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
+      backdrop-filter: blur(22px);
+      box-shadow: 0 34px 80px rgba(0,0,0,.24);
+      overflow: hidden;
+    }
+    .visual-top {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .dots { display: flex; gap: 7px; }
+    .dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
+    .visual-status { color: var(--cyan-200); font: 700 11px/1 "Manrope", sans-serif; letter-spacing: .13em; }
+    .visual-map { height: calc(100% - 64px); position: relative; padding: 22px; }
+    .map-panel {
+      position: absolute;
+      inset: 22px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 64% 30%, rgba(52,214,232,.18), transparent 28%),
+        #061827;
+    }
+    .map-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .thai-shape {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 260px;
+      transform: translate(-44%,-50%);
+      filter: drop-shadow(0 25px 40px rgba(0,0,0,.30));
+    }
+    .heat-point {
+      position: absolute;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      animation: float 4s ease-in-out infinite;
+    }
+    .heat-point.a { width: 56px; height: 48px; left: 48%; top: 24%; background: rgba(245,111,118,.82); }
+    .heat-point.b { width: 44px; height: 42px; left: 39%; top: 46%; background: rgba(245,185,65,.84); animation-delay: .6s; }
+    .heat-point.c { width: 50px; height: 46px; left: 58%; top: 58%; background: rgba(36,182,122,.85); animation-delay: 1.1s; }
+    .heat-point.d { width: 42px; height: 46px; left: 46%; top: 72%; background: rgba(45,140,255,.88); animation-delay: 1.5s; }
+    @keyframes float { 50% { transform: translateY(-7px); } }
+    .map-kpi {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(5,22,38,.78);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(12px);
+      color: white;
+    }
+    .map-kpi small { display: block; color: rgba(255,255,255,.58); margin-bottom: 3px; }
+    .map-kpi strong { font: 800 28px/1 "Manrope",sans-serif; color: var(--cyan-400); }
+    .satellite {
+      position: absolute;
+      right: -12px;
+      top: 52px;
+      width: 118px;
+      transform: rotate(-8deg);
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
+      animation: satellite 5s ease-in-out infinite;
+    }
+    @keyframes satellite { 50% { transform: translateY(-12px) rotate(-4deg); } }
+
+    /* Overview */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .summary-card {
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+    }
+    .summary-card p { font-size: 17px; }
+    .quote {
+      margin-top: 24px;
+      padding: 20px 22px;
+      border-left: 4px solid var(--blue-500);
+      border-radius: 0 16px 16px 0;
+      background: #eff7ff;
+      font-weight: 700;
+      color: var(--navy-800);
+    }
+    .mini-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .mini-stat {
+      min-height: 150px;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #0b2742, #103858);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .mini-stat::after {
+      content: "";
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      position: absolute;
+      right: -32px; top: -30px;
+      background: rgba(52,214,232,.12);
+    }
+    .mini-stat:nth-child(2) { background: linear-gradient(145deg, #136d5b, #1c9d73); }
+    .mini-stat:nth-child(3) { background: linear-gradient(145deg, #8c5b13, #d28a1f); }
+    .mini-stat:nth-child(4) { background: linear-gradient(145deg, #5a3a94, #7456c8); }
+    .mini-stat strong { display: block; font: 800 34px/1.1 "Manrope",sans-serif; margin-bottom: 10px; }
+    .mini-stat span { color: rgba(255,255,255,.72); font-size: 14px; }
+
+    /* Pain points */
+    .cards-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .info-card {
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(8,41,73,.06);
+      transition: .25s ease;
+    }
+    .info-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .icon-box {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 22px;
+      color: var(--blue-600);
+      background: #eaf4ff;
+    }
+    .icon-box.red { color: #d84d5b; background: #fff0f1; }
+    .icon-box.amber { color: #bf7a16; background: #fff7e8; }
+    .icon-box.green { color: #14885a; background: #eaf9f2; }
+    .icon-box svg { width: 28px; height: 28px; }
+    .info-card h3 { font-size: 22px; }
+    .info-card p { margin-bottom: 0; }
+
+    /* Data sources */
+    .source-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+    .source-card {
+      padding: 24px;
+      min-height: 230px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.055);
+      position: relative;
+      overflow: hidden;
+    }
+    .source-card::after {
+      content: "";
+      position: absolute;
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      top: -70px; right: -70px;
+      background: radial-gradient(circle, rgba(52,214,232,.18), transparent 68%);
+    }
+    .source-no { font: 800 12px/1 "Manrope", sans-serif; color: var(--cyan-400); letter-spacing: .15em; }
+    .source-card h3 { color: white; font-size: 22px; margin: 54px 0 8px; }
+    .source-card p { font-size: 14px; margin: 0; }
+    .source-meta { display: inline-flex; margin-top: 18px; color: var(--cyan-200); font-size: 12px; font-weight: 700; }
+
+    /* Pipeline */
+    .pipeline {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr 60px 1fr;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .pipe-card {
+      padding: 30px;
+      border-radius: 26px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 36px rgba(8,41,73,.07);
+    }
+    .pipe-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font: 800 12px/1 "Manrope", sans-serif;
+      color: var(--blue-600);
+      margin-bottom: 20px;
+      letter-spacing: .1em;
+    }
+    .pipe-graphic {
+      height: 120px;
+      border-radius: 18px;
+      margin-bottom: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg,#edf7ff,#f7fbff);
+      overflow: hidden;
+      position: relative;
+    }
+    .pipe-graphic svg { width: 88px; }
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: var(--blue-500);
+    }
+    .arrow svg { width: 34px; }
+    .model-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #edf4fa;
+      color: #45647f;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Dashboard */
+    .dashboard-shell {
+      padding: 18px;
+      border-radius: 30px;
+      background: #0a2035;
+      box-shadow: var(--shadow-lg);
+    }
+    .dash-window {
+      border-radius: 22px;
+      overflow: hidden;
+      background: #f4f8fb;
+    }
+    .dash-top {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 22px;
+      background: white;
+      border-bottom: 1px solid #e3ebf2;
+    }
+    .dash-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--navy-800); }
+    .dash-brand i { width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(135deg,var(--cyan-400),var(--blue-500)); }
+    .dash-filters { display: flex; gap: 8px; }
+    .dash-filter { padding: 7px 11px; background: #f1f5f9; border-radius: 9px; color: #63778c; font-size: 11px; font-weight: 700; }
+    .dash-body { display: grid; grid-template-columns: 1.45fr .55fr; min-height: 520px; }
+    .dash-map { position: relative; overflow: hidden; background: #dfeaf1; }
+    .dash-map svg { width: 100%; height: 100%; object-fit: cover; }
+    .map-overlay {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 220px;
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 14px 32px rgba(9,43,72,.12);
+    }
+    .map-overlay small { color: var(--ink-500); }
+    .score-row { display: flex; justify-content: space-between; align-items: end; margin-top: 8px; }
+    .score-row strong { font: 800 36px/1 "Manrope",sans-serif; color: #df515d; }
+    .score-row span { color: #df515d; font-size: 12px; font-weight: 800; }
+    .dash-side { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+    .side-card { padding: 18px; border-radius: 16px; background: white; border: 1px solid #e1e9f0; }
+    .side-card h4 { margin-bottom: 6px; font-size: 14px; }
+    .side-card p { font-size: 12px; margin-bottom: 14px; }
+    .bar { height: 8px; background: #edf1f5; border-radius: 999px; overflow: hidden; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,var(--blue-500),var(--cyan-400)); }
+    .legend { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .legend div { border-radius: 10px; padding: 10px 8px; font-size: 10px; font-weight: 700; text-align: center; }
+    .legend .hi { background: #fff0f1; color: #ce4f5b; }
+    .legend .mid { background: #fff7e8; color: #b87819; }
+    .legend .low { background: #eaf9f2; color: #168659; }
+
+    /* Beneficiaries */
+    .benefit-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .benefit-card {
+      padding: 28px;
+      border-radius: 24px;
+      color: white;
+      min-height: 270px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg,#0c2f4d,#0a2035);
+    }
+    .benefit-card:nth-child(2) { background: linear-gradient(145deg,#0f6654,#168766); }
+    .benefit-card:nth-child(3) { background: linear-gradient(145deg,#654611,#9f6f16); }
+    .benefit-card::after {
+      content: "";
+      width: 180px; height: 180px;
+      position: absolute;
+      right: -80px; bottom: -80px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 26px rgba(255,255,255,.03), 0 0 0 52px rgba(255,255,255,.02);
+    }
+    .benefit-card h3 { color: white; margin-top: 44px; }
+    .benefit-card p { color: rgba(255,255,255,.72); margin: 0; }
+    .benefit-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 16px; background: rgba(255,255,255,.10); }
+    .benefit-icon svg { width: 25px; }
+
+    /* Policy */
+    .policy-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: start; }
+    .policy-sticky { position: sticky; top: 120px; }
+    .policy-list { display: grid; gap: 16px; }
+    .policy-item {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 22px;
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .policy-no {
+      width: 68px; height: 68px;
+      display: grid; place-items: center;
+      border-radius: 20px;
+      background: linear-gradient(145deg,#e9f5ff,#f7fbff);
+      color: var(--blue-600);
+      font: 800 22px/1 "Manrope",sans-serif;
+    }
+    .policy-item h3 { font-size: 21px; }
+    .policy-item p { margin: 0; }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8%; right: 8%; top: 30px;
       height: 2px;
-      background: linear-gradient(90deg, #a8c0ff, #a7eadc);
-      z-index: 0;
+      background: linear-gradient(90deg,var(--cyan-400),var(--blue-500));
     }
-
-    .data-flow:last-child::after { display: none; }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
+    .phase { padding: 0 14px; position: relative; }
+    .phase-dot {
+      width: 60px; height: 60px;
+      display: grid; place-items: center;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      color: var(--navy-950);
+      background: var(--cyan-400);
+      border: 8px solid var(--navy-900);
+      box-shadow: 0 0 0 1px rgba(52,214,232,.35);
+      font: 800 14px/1 "Manrope",sans-serif;
+      position: relative;
+      z-index: 2;
     }
+    .phase h3 { color: white; font-size: 19px; }
+    .phase p { font-size: 14px; }
 
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
+    /* Conclusion */
+    .closing {
+      padding: 100px 0;
+      background:
+        radial-gradient(circle at 90% 30%, rgba(52,214,232,.16), transparent 30%),
+        linear-gradient(145deg,#061726,#0a2b47);
+      color: white;
+      overflow: hidden;
     }
-
-    #scroll-progress {
-      position: fixed;
-      inset: 0 auto auto 0;
-      width: 0;
-      height: 3px;
-      z-index: 100;
-      background: linear-gradient(90deg, var(--primary), var(--mint));
+    .closing-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      padding: 50px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(18px);
     }
+    .closing-card h2 { margin-bottom: 14px; }
+    .closing-card p { max-width: 780px; margin: 0; }
+    footer { padding: 28px 0; background: #03101d; color: rgba(255,255,255,.52); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-    .skip-link {
-      position: fixed;
-      left: 1rem;
-      top: -80px;
-      z-index: 200;
-      padding: .75rem 1rem;
-      background: #fff;
-      color: var(--ink);
-      border-radius: .75rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,.18);
-      transition: top .2s ease;
-    }
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    .skip-link:focus { top: 1rem; }
-
-    @media (max-width: 767px) {
-      body { font-size: 15px; line-height: 1.75; }
-      .data-flow::after { display: none; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 20px;
+        background: rgba(4,17,31,.96);
+        backdrop-filter: blur(18px);
       }
-      .reveal { opacity: 1; transform: none; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: grid; place-items: center; }
+      .hero-grid, .overview-grid, .policy-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-visual { min-height: 560px; }
+      .visual-card { inset: 24px; }
+      .cards-3, .benefit-list { grid-template-columns: 1fr; }
+      .source-grid { grid-template-columns: repeat(2,1fr); }
+      .pipeline { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); height: 46px; }
+      .dash-body { grid-template-columns: 1fr; }
+      .dash-side { display: grid; grid-template-columns: repeat(2,1fr); }
+      .policy-sticky { position: static; }
+      .timeline { grid-template-columns: repeat(2,1fr); gap: 40px 0; }
+      .timeline::before { display: none; }
+      .closing-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .section { padding: 76px 0; }
+      .hero { padding-top: 118px; }
+      .hero-grid { gap: 36px; }
+      h1 { font-size: 50px; }
+      .hero-metrics { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 440px; }
+      .visual-card { inset: 12px 0; }
+      .orbit { width: 380px; height: 380px; }
+      .satellite { width: 90px; right: -16px; }
+      .thai-shape { width: 205px; }
+      .mini-stats, .source-grid { grid-template-columns: 1fr; }
+      .dash-top { height: auto; min-height: 64px; padding: 14px; flex-wrap: wrap; }
+      .dash-filters { width: 100%; overflow-x: auto; }
+      .dash-map { min-height: 390px; }
+      .dash-side { grid-template-columns: 1fr; }
+      .policy-item { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .closing-card { padding: 30px; }
+      .footer-inner { display: block; text-align: center; }
     }
   </style>
 </head>
-
-<body class="overflow-x-hidden bg-white">
-  <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
-  <div id="scroll-progress" aria-hidden="true"></div>
-
-  <!-- Navigation -->
-  <nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b1530]/85 backdrop-blur-xl" aria-label="เมนูหลัก">
-    <div class="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-8">
-      <a href="#home" class="group flex items-center gap-3" aria-label="GeoEquity หน้าแรก">
-        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-primary to-mint text-white shadow-lg shadow-blue-950/30 transition-transform group-hover:scale-105">
-          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M4 17.5V6.8a1 1 0 0 1 .55-.9L9 3.7l6 3 4.45-2.2A1 1 0 0 1 21 5.4v10.7a1 1 0 0 1-.55.9L15 19.7l-6-3-3.55 1.7A1 1 0 0 1 4 17.5Z" />
-            <path d="M9 3.7v13M15 6.7v13" />
-            <circle cx="12" cy="11.5" r="1.7" fill="currentColor" stroke="none" />
-          </svg>
+<body>
+  <header class="topbar" id="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="GeoEquity หน้าแรก">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M4.5 9.5h15M4.5 14.5h15M12 4c2 2.2 3 4.9 3 8s-1 5.8-3 8c-2-2.2-3-4.9-3-8s1-5.8 3-8Z"/></svg>
         </span>
-        <span>
-          <strong class="font-display block text-lg font-extrabold tracking-tight text-white">GeoEquity</strong>
-          <span class="block text-[10px] font-medium tracking-[.16em] text-slate-400">GEOAI FOR EQUITY</span>
-        </span>
+        <span>GeoEquity</span>
       </a>
-
-      <div class="hidden items-center gap-1 lg:flex">
-        <a href="#problem" class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">ปัญหา</a>
-        <a href="#methodology" class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">กระบวนการ GeoAI</a>
-        <a href="#implementation" class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">การนำไปใช้</a>
-        <a href="#impact" class="rounded-xl px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">ผลลัพธ์</a>
-      </div>
-
-      <a href="#methodology" class="hidden rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-ink shadow-lg transition hover:-translate-y-0.5 hover:bg-skysoft lg:inline-flex">
-        ดูแนวทางโครงการ
-      </a>
-
-      <button id="menu-button" class="grid h-11 w-11 place-items-center rounded-xl border border-white/15 text-white lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="เปิดเมนู">
-        <svg id="menu-open-icon" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" />
-        </svg>
-        <svg id="menu-close-icon" viewBox="0 0 24 24" class="hidden h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="m6 6 12 12M18 6 6 18" />
-        </svg>
+      <nav class="nav-links" id="navLinks" aria-label="เมนูหลัก">
+        <a href="#overview">ภาพรวม</a>
+        <a href="#problem">ปัญหา</a>
+        <a href="#solution">GeoAI</a>
+        <a href="#dashboard">ผลลัพธ์</a>
+        <a href="#roadmap">แผนดำเนินงาน</a>
+        <a class="nav-cta" href="geoequity_project_plan.pdf" target="_blank" rel="noopener">เปิดข้อเสนอฉบับเต็ม</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
+  </header>
 
-    <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#0b1530] px-5 py-4 lg:hidden">
-      <div class="mx-auto grid max-w-7xl gap-2">
-        <a href="#problem" class="rounded-xl px-4 py-3 font-medium text-slate-200 hover:bg-white/10">ความสำคัญของปัญหา</a>
-        <a href="#methodology" class="rounded-xl px-4 py-3 font-medium text-slate-200 hover:bg-white/10">กระบวนการ GeoAI</a>
-        <a href="#implementation" class="rounded-xl px-4 py-3 font-medium text-slate-200 hover:bg-white/10">การนำไปใช้จริง</a>
-        <a href="#impact" class="rounded-xl px-4 py-3 font-medium text-slate-200 hover:bg-white/10">ผลลัพธ์ที่คาดหวัง</a>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker"><span class="pulse-dot"></span> GEOHACKATHON 2026 · PROJECT PROPOSAL</div>
+          <h1>Geo<span>Equity</span></h1>
+          <p class="hero-sub">แพลตฟอร์ม GeoAI สแกนความเหลื่อมล้ำระดับเส้นเลือดฝอย เปลี่ยนข้อมูลจากอวกาศให้เป็นการจัดสรรงบประมาณเชิงรุกที่แม่นยำและเป็นธรรม</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#overview">สำรวจโครงการ
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="geoequity_project_plan.pdf" target="_blank" rel="noopener">อ่าน PDF ฉบับเต็ม</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric"><strong>1 km²</strong><span>ความละเอียดระดับกริด</span></div>
+            <div class="metric"><strong>0–100</strong><span>ดัชนีความมั่งคั่งรายพื้นที่</span></div>
+            <div class="metric"><strong>4 Sources</strong><span>ข้อมูลเชิงพื้นที่หลายมิติ</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="ภาพจำลองแดชบอร์ด GeoAI">
+          <div class="orbit"></div>
+          <div class="visual-card">
+            <div class="visual-top">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <div class="visual-status">LIVE GEO-INTELLIGENCE</div>
+            </div>
+            <div class="visual-map">
+              <div class="map-panel">
+                <div class="map-grid"></div>
+                <svg class="thai-shape" viewBox="0 0 260 420" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173f5c"/><stop offset="1" stop-color="#0f2d45"/></linearGradient>
+                  </defs>
+                  <path d="M109 10c26 17 42 43 42 72 0 19-8 36-2 52 7 18 26 21 25 41-1 21-27 28-28 49-1 15 14 25 12 42-3 20-24 28-26 48-2 15 9 25 12 38 4 17-4 33-13 46-8 11-19 19-29 12-10-7-7-22-2-34 6-15 13-28 12-45-2-26-26-45-23-71 2-20 19-31 19-52 0-24-25-37-26-61-1-21 16-31 27-45 10-12 12-29 20-42 9-15 30-26 50-20Z" fill="url(#land)" stroke="#2c6c8b" stroke-width="2"/>
+                  <path d="M113 40c18 16 22 40 13 61M95 126c29 4 46 16 49 37M90 215c22 3 38 12 49 31M88 301c20 8 29 19 31 36" fill="none" stroke="#2e7698" stroke-width="2" opacity=".55"/>
+                </svg>
+                <div class="heat-point a" title="ความเปราะบางสูง"></div>
+                <div class="heat-point b" title="ความเปราะบางปานกลาง"></div>
+                <div class="heat-point c" title="ความเปราะบางต่ำ"></div>
+                <div class="heat-point d" title="พื้นที่เฝ้าระวัง"></div>
+                <div class="map-kpi"><small>Vulnerability Priority</small><strong>82.4</strong></div>
+              </div>
+            </div>
+          </div>
+          <svg class="satellite" viewBox="0 0 150 110" aria-hidden="true">
+            <g fill="none" stroke="#b7f7ff" stroke-width="3">
+              <rect x="58" y="35" width="34" height="34" rx="7" fill="#183c57"/>
+              <rect x="7" y="28" width="44" height="48" rx="4" fill="#1d6fa0"/>
+              <rect x="99" y="28" width="44" height="48" rx="4" fill="#1d6fa0"/>
+              <path d="M51 52h7M92 52h7M75 35V20M75 69v16"/>
+              <circle cx="75" cy="52" r="9" fill="#34d6e8"/>
+            </g>
+          </svg>
+        </div>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <main id="main-content">
-    <!-- Hero -->
-    <section id="home" class="relative min-h-[760px] overflow-hidden bg-ink pt-[76px] text-white">
-      <div class="hero-grid absolute inset-0 opacity-75" aria-hidden="true"></div>
-      <div class="map-lines absolute inset-0" aria-hidden="true"></div>
-      <div class="absolute -left-40 top-28 h-[420px] w-[420px] rounded-full bg-primary/20 blur-3xl" aria-hidden="true"></div>
-      <div class="absolute -right-40 bottom-0 h-[430px] w-[430px] rounded-full bg-mint/15 blur-3xl" aria-hidden="true"></div>
-
-      <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 lg:grid-cols-[1.08fr_.92fr] lg:px-8 lg:py-28">
+    <section class="section" id="overview">
+      <div class="container overview-grid">
         <div class="reveal">
-          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold text-blue-100 backdrop-blur">
-            <span class="h-2 w-2 animate-pulse rounded-full bg-mint"></span>
-            Unified Challenge · GeoHackathon 2026
-          </div>
-
-          <h1 class="font-display max-w-4xl text-4xl font-extrabold leading-[1.18] sm:text-5xl lg:text-[4.25rem]">
-            เปลี่ยนข้อมูลจากอวกาศ
-            <span class="gradient-text block">ให้กลายเป็นความเท่าเทียม</span>
-          </h1>
-
-          <p class="mt-7 max-w-2xl text-[17px] font-light leading-8 text-slate-300 sm:text-lg">
-            ระบบวิเคราะห์ดัชนีความมั่งคั่งเชิงพื้นที่ความละเอียดสูง ผสานข้อมูลดาวเทียม THEOS-2 และเทคโนโลยี GeoAI เพื่อช่วยให้การจัดสรรงบประมาณและการตัดสินใจเชิงนโยบายตรงจุดมากขึ้น
-          </p>
-
-          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#problem" class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 font-bold text-white shadow-xl shadow-blue-950/30 transition hover:-translate-y-0.5 hover:bg-blue-500">
-              สำรวจแนวคิดโครงการ
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-            </a>
-            <a href="#methodology" class="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
-              ดูกระบวนการทำงาน
-            </a>
-          </div>
-
-          <div class="mt-11 grid max-w-xl grid-cols-3 gap-3 border-t border-white/10 pt-7">
-            <div>
-              <strong class="font-display block text-2xl font-extrabold text-white">1 km²</strong>
-              <span class="text-xs text-slate-400">ความละเอียดพื้นที่</span>
-            </div>
-            <div>
-              <strong class="font-display block text-2xl font-extrabold text-white">4 แหล่ง</strong>
-              <span class="text-xs text-slate-400">ข้อมูลหลัก</span>
-            </div>
-            <div>
-              <strong class="font-display block text-2xl font-extrabold text-white">77 จังหวัด</strong>
-              <span class="text-xs text-slate-400">รองรับการขยายผล</span>
-            </div>
-          </div>
+          <div class="eyebrow">Executive Summary</div>
+          <h2>มองเห็นความเหลื่อมล้ำ<br>ที่ซ่อนอยู่หลัง “ค่าเฉลี่ย”</h2>
+          <p class="lead">GeoEquity แปลงภาพถ่ายดาวเทียมและข้อมูลโครงสร้างพื้นฐานให้เป็น <strong>Micro-level Wealth Index</strong> เพื่อช่วยภาครัฐชี้เป้าพื้นที่เปราะบางได้ละเอียดถึงระดับ 1 ตารางกิโลเมตร</p>
         </div>
-
-        <!-- Dashboard visual -->
-        <div class="reveal relative lg:pl-5" aria-label="ภาพตัวอย่างแดชบอร์ด GeoEquity">
-          <div class="glass relative overflow-hidden rounded-[30px] p-4 sm:p-5">
-            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-              <div>
-                <span class="block text-xs font-semibold text-slate-400">LIVE GEO-INTELLIGENCE</span>
-                <strong class="font-display mt-1 block text-base text-white">Thailand Vulnerability Map</strong>
-              </div>
-              <span class="rounded-full bg-mint/15 px-3 py-1 text-[11px] font-bold text-mint">อัปเดตรายไตรมาส</span>
-            </div>
-
-            <div class="relative mt-4 min-h-[330px] overflow-hidden rounded-2xl bg-[#111e3e] p-5 sm:min-h-[390px]">
-              <svg viewBox="0 0 440 360" class="absolute inset-0 h-full w-full opacity-85" aria-hidden="true">
-                <defs>
-                  <linearGradient id="mapGradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#3769f6" />
-                    <stop offset="1" stop-color="#37d4b4" />
-                  </linearGradient>
-                  <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                </defs>
-                <g opacity=".17" stroke="#b9c8ed" stroke-width="1">
-                  <path d="M0 45h440M0 90h440M0 135h440M0 180h440M0 225h440M0 270h440M0 315h440" />
-                  <path d="M55 0v360M110 0v360M165 0v360M220 0v360M275 0v360M330 0v360M385 0v360" />
-                </g>
-                <path d="M221 24c-21 9-33 27-34 52-1 24-16 35-9 55 6 17 23 20 21 41-2 26-27 44-25 72 1 22 20 34 26 54 7 23 6 34 22 38 18 4 37-15 41-35 5-24-14-43-9-61 5-20 29-25 35-47 6-24-16-39-16-60 0-26 29-43 19-71-9-27-47-48-71-38Z" fill="url(#mapGradient)" opacity=".72" filter="url(#glow)" />
-                <g fill="#fff" opacity=".9">
-                  <circle cx="209" cy="99" r="4"/><circle cx="240" cy="148" r="5"/><circle cx="205" cy="192" r="4"/><circle cx="234" cy="245" r="4"/><circle cx="220" cy="303" r="5"/>
-                </g>
-                <g fill="none" stroke="#fff" stroke-width="1.5" opacity=".5">
-                  <circle cx="240" cy="148" r="14"/><circle cx="240" cy="148" r="25"/>
-                  <circle cx="220" cy="303" r="13"/><circle cx="220" cy="303" r="23"/>
-                </g>
-              </svg>
-
-              <div class="absolute left-4 top-4 rounded-xl border border-white/10 bg-[#0b1530]/80 p-3 backdrop-blur sm:left-5 sm:top-5">
-                <span class="text-[10px] font-semibold text-slate-400">PRIORITY AREA</span>
-                <strong class="font-display mt-1 block text-xl font-bold text-white">High · 0.84</strong>
-                <span class="text-[11px] text-mint">▲ ต้องตรวจสอบเชิงพื้นที่</span>
-              </div>
-
-              <div class="absolute bottom-4 right-4 w-[150px] rounded-xl border border-white/10 bg-[#0b1530]/85 p-3 backdrop-blur sm:bottom-5 sm:right-5 sm:w-[170px]">
-                <div class="mb-2 flex items-center justify-between text-[10px] text-slate-400"><span>Wealth Index</span><span>0—1</span></div>
-                <div class="h-2 rounded-full bg-gradient-to-r from-rose-400 via-amber-300 to-mint"></div>
-                <div class="mt-2 flex justify-between text-[9px] text-slate-500"><span>เปราะบาง</span><span>มั่งคั่ง</span></div>
-              </div>
-            </div>
-
-            <div class="mt-4 grid grid-cols-3 gap-3">
-              <div class="rounded-2xl bg-white/5 p-3"><span class="block text-[10px] text-slate-400">GRID CELLS</span><strong class="font-display mt-1 block text-lg text-white">12,480</strong></div>
-              <div class="rounded-2xl bg-white/5 p-3"><span class="block text-[10px] text-slate-400">MODEL</span><strong class="font-display mt-1 block text-lg text-white">GeoAI</strong></div>
-              <div class="rounded-2xl bg-white/5 p-3"><span class="block text-[10px] text-slate-400">STATUS</span><strong class="font-display mt-1 block text-lg text-mint">Ready</strong></div>
-            </div>
+        <div class="summary-card reveal">
+          <p>ระบบผสานข้อมูลจาก <strong>THEOS-2, VIIRS, Sentinel-2 และ OpenStreetMap</strong> ผ่าน Deep Learning และ Machine Learning ก่อนสรุปเป็น Policy Dashboard สำหรับ Precision Budgeting การวางผังเมือง และการติดตามผลเชิงหลักฐาน</p>
+          <div class="quote">“จากข้อมูลพิกเซล สู่การตัดสินใจเชิงนโยบายที่ลงมือทำได้จริง”</div>
+          <div class="mini-stats" style="margin-top:22px">
+            <div class="mini-stat"><strong>50 cm</strong><span>ศักยภาพภาพถ่าย THEOS-2</span></div>
+            <div class="mini-stat"><strong>รายไตรมาส</strong><span>แนวทางอัปเดตสถานการณ์</span></div>
+            <div class="mini-stat"><strong>R² / RMSE</strong><span>ตัวชี้วัดความแม่นยำของโมเดล</span></div>
+            <div class="mini-stat"><strong>What-if</strong><span>จำลองผลลัพธ์เชิงนโยบาย</span></div>
           </div>
         </div>
       </div>
-
-      <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-white" aria-hidden="true"></div>
     </section>
 
-    <!-- Problem -->
-    <section id="problem" class="relative py-24 sm:py-28">
-      <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <span class="section-kicker">ปัญหาความเหลื่อมล้ำ</span>
-          <h2 class="font-display mt-4 text-3xl font-extrabold text-ink sm:text-4xl lg:text-5xl">ทำไมข้อมูลแบบเดิมจึงยังมองไม่เห็นความเหลื่อมล้ำ</h2>
-          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 sm:text-lg">ปัญหาความยากจนไม่ได้กระจายตัวเท่ากันทั้งจังหวัด การใช้เพียงค่าเฉลี่ยจึงอาจทำให้พื้นที่เปราะบางขนาดเล็กถูกมองข้าม</p>
+    <section class="section section-soft" id="problem">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="eyebrow">Problem Definition</div>
+          <h2>3 ช่องว่างของระบบประเมินความยากจนในปัจจุบัน</h2>
+          <p class="lead">ปัญหาไม่ได้อยู่ที่ “ไม่มีข้อมูล” แต่อยู่ที่ข้อมูลหยาบ ล่าช้า และไม่ครอบคลุมประชากรที่เคลื่อนย้าย</p>
         </div>
-
-        <div class="mt-14 grid gap-5 md:grid-cols-3">
-          <article class="soft-card reveal rounded-[26px] p-7 sm:p-8">
-            <span class="number-badge">01</span>
-            <h3 class="font-display mt-6 text-xl font-bold">ค่าเฉลี่ยบดบังความจริง</h3>
-            <p class="mt-3 text-sm leading-7">ตัวเลขเศรษฐกิจระดับจังหวัด เช่น GPP อาจสะท้อนภาพรวมที่ดูรุ่งเรือง แต่ไม่สามารถแสดงชุมชนแออัดหรือพื้นที่เปราะบางที่ซ่อนอยู่ภายในจังหวัดท่องเที่ยวและเขตอุตสาหกรรมได้ชัดเจน</p>
+        <div class="cards-3">
+          <article class="info-card reveal">
+            <div class="icon-box red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/><path d="m4 7 6-4 6 7 4-3"/></svg></div>
+            <h3>ความย้อนแย้งของค่าเฉลี่ย</h3>
+            <p>ตัวเลข GPP ระดับจังหวัดอาจบดบังชุมชนยากจนที่ซ่อนอยู่ในจังหวัดเศรษฐกิจขนาดใหญ่ ทำให้การจัดสรรงบไม่ตรงจุด</p>
           </article>
-
-          <article class="soft-card reveal rounded-[26px] p-7 sm:p-8">
-            <span class="number-badge">02</span>
-            <h3 class="font-display mt-6 text-xl font-bold">ข้อมูลมาถึงช้าเกินไป</h3>
-            <p class="mt-3 text-sm leading-7">การสำรวจข้อมูลความจำเป็นพื้นฐานต้องใช้บุคลากรลงพื้นที่ในวงกว้าง ทำให้ข้อมูลอาจล่าช้ากว่าสถานการณ์จริง 1–2 ปี และตอบสนองต่อภาวะเศรษฐกิจที่เปลี่ยนแปลงรวดเร็วได้ยาก</p>
+          <article class="info-card reveal">
+            <div class="icon-box amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg></div>
+            <h3>ความล่าช้าของข้อมูล</h3>
+            <p>การสำรวจทีละครัวเรือนใช้เวลาและทรัพยากรสูง ข้อมูลจึงอาจล้าหลังจนไม่ทันต่อการแก้ปัญหาเชิงรุก</p>
           </article>
-
-          <article class="soft-card reveal rounded-[26px] p-7 sm:p-8">
-            <span class="number-badge">03</span>
-            <h3 class="font-display mt-6 text-xl font-bold">ประชากรแฝงตกหล่น</h3>
-            <p class="mt-3 text-sm leading-7">ฐานข้อมูลที่ผูกกับทะเบียนบ้านอาจไม่ครอบคลุมแรงงานย้ายถิ่น คนจนเมือง และผู้พักอาศัยในชุมชนไม่เป็นทางการ ส่งผลให้กลุ่มเหล่านี้เข้าถึงความช่วยเหลือได้ไม่เต็มที่</p>
+          <article class="info-card reveal">
+            <div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/></svg></div>
+            <h3>ประชากรแฝงตกหล่น</h3>
+            <p>ผู้ย้ายถิ่นและชุมชนไม่เป็นทางการอาจไม่มีชื่อในทะเบียนราษฎร์ของพื้นที่ จึงไม่ถูกมองเห็นในระบบสวัสดิการ</p>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="reveal mt-10 overflow-hidden rounded-[30px] bg-gradient-to-br from-[#102044] to-[#0b1530] p-7 text-white shadow-soft sm:p-10 lg:p-12">
-          <div class="grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-            <div>
-              <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-blue-200">บริบทประเทศไทย</span>
-              <h3 class="font-display mt-5 text-2xl font-bold sm:text-3xl">จากการจัดสรรแบบภาพรวม สู่การมองเห็นระดับชุมชน</h3>
-              <p class="mt-5 leading-8 text-slate-300">จังหวัดเศรษฐกิจสำคัญ เช่น ภูเก็ต ชลบุรี ระยอง และเชียงใหม่ อาจมีทั้งพื้นที่เติบโตสูงและพื้นที่เปราะบางอยู่ใกล้กัน GeoEquity จึงทำหน้าที่เสมือน “ตาข่ายจากอวกาศ” เพื่อช่วยชี้เป้าพื้นที่ที่ข้อมูลแบบเดิมอาจมองไม่เห็น</p>
+    <section class="section section-dark" id="solution">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow" style="color:var(--cyan-400)">Multi-modal Data Fusion</div>
+          <h2>ผสาน 4 มุมมองเชิงพื้นที่<br>เพื่อเข้าใจชีวิตจริงของชุมชน</h2>
+          <p class="lead">ทุกกริดขนาด 1 × 1 กิโลเมตรจะได้รับคุณลักษณะจากภาพถ่ายดาวเทียม แสงยามค่ำคืน สิ่งแวดล้อม และการเข้าถึงบริการพื้นฐาน</p>
+        </div>
+        <div class="source-grid">
+          <article class="source-card reveal"><div class="source-no">01 · OPTICAL</div><h3>THEOS-2</h3><p>วิเคราะห์ความหนาแน่นอาคาร ลักษณะพื้นที่ และวัสดุหลังคา เพื่อประมาณสภาพความเป็นอยู่</p><span class="source-meta">SPATIAL DETAIL</span></article>
+          <article class="source-card reveal"><div class="source-no">02 · NIGHT LIGHT</div><h3>VIIRS</h3><p>ใช้ความเข้มแสงยามค่ำคืนเป็นตัวแทนกิจกรรมทางเศรษฐกิจและการเข้าถึงไฟฟ้า</p><span class="source-meta">ECONOMIC PROXY</span></article>
+          <article class="source-card reveal"><div class="source-no">03 · MULTISPECTRAL</div><h3>Sentinel-2</h3><p>คำนวณ NDVI เพื่อประเมินพื้นที่สีเขียวและคุณภาพสภาพแวดล้อมรอบชุมชน</p><span class="source-meta">ENVIRONMENT</span></article>
+          <article class="source-card reveal"><div class="source-no">04 · ACCESSIBILITY</div><h3>OpenStreetMap</h3><p>วัดระยะถึงโรงเรียน โรงพยาบาล แหล่งน้ำ และโครงสร้างพื้นฐานสำคัญ</p><span class="source-meta">SERVICE ACCESS</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="eyebrow">GeoAI Pipeline</div>
+          <h2>จากภาพดาวเทียม สู่ดัชนีที่ตรวจสอบได้</h2>
+          <p class="lead">ออกแบบกระบวนการให้รวดเร็วพอสำหรับ Hackathon แต่ยังมีหลักการสอบเทียบและประเมินผลที่ชัดเจน</p>
+        </div>
+        <div class="pipeline">
+          <article class="pipe-card reveal">
+            <div class="pipe-step">STEP 01 · FEATURE EXTRACTION</div>
+            <div class="pipe-graphic"><svg viewBox="0 0 100 100" fill="none"><rect x="16" y="16" width="68" height="68" rx="14" fill="#d9efff"/><path d="M26 68 43 47l12 14 9-9 12 16" stroke="#1777e8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="65" cy="35" r="7" fill="#34d6e8"/></svg></div>
+            <h3>สกัดคุณลักษณะภาพ</h3>
+            <p>ใช้ Pre-trained CNN เช่น ResNet-50 เปลี่ยนภาพ THEOS-2 เป็นเวกเตอร์คุณลักษณะ</p>
+            <div class="model-tags"><span class="tag">CNN</span><span class="tag">ResNet-50</span><span class="tag">Embeddings</span></div>
+          </article>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></div>
+          <article class="pipe-card reveal">
+            <div class="pipe-step">STEP 02 · DATA FUSION</div>
+            <div class="pipe-graphic"><svg viewBox="0 0 100 100" fill="none"><circle cx="28" cy="50" r="13" fill="#34d6e8"/><circle cx="72" cy="30" r="13" fill="#2d8cff"/><circle cx="72" cy="70" r="13" fill="#24b67a"/><path d="M40 47 59 35M40 54l19 11" stroke="#0b2742" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="50" r="7" fill="#0b2742"/></svg></div>
+            <h3>รวมข้อมูลหลายมิติ</h3>
+            <p>เชื่อม Embeddings กับค่า VIIRS, NDVI และระยะทางจาก OSM ในระดับกริดเดียวกัน</p>
+            <div class="model-tags"><span class="tag">Concatenate</span><span class="tag">Grid Cell</span><span class="tag">1 km²</span></div>
+          </article>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></div>
+          <article class="pipe-card reveal">
+            <div class="pipe-step">STEP 03 · PREDICTION</div>
+            <div class="pipe-graphic"><svg viewBox="0 0 100 100" fill="none"><path d="M18 75h64" stroke="#aac3d7" stroke-width="3"/><rect x="25" y="51" width="12" height="24" rx="4" fill="#a9f1f7"/><rect x="44" y="37" width="12" height="38" rx="4" fill="#34d6e8"/><rect x="63" y="21" width="12" height="54" rx="4" fill="#2d8cff"/><path d="m28 37 20-13 19 4 12-15" stroke="#0b2742" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>พยากรณ์และสอบเทียบ</h3>
+            <p>ใช้ XGBoost Regressor พยากรณ์ Wealth Index 0–100 และตรวจสอบด้วย K-Fold, R² และ RMSE</p>
+            <div class="model-tags"><span class="tag">XGBoost</span><span class="tag">K-Fold</span><span class="tag">Calibration</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="dashboard">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Actionable Geo-Intelligence</div>
+          <h2>ผลลัพธ์ไม่ใช่แค่แผนที่<br>แต่คือเครื่องมือสั่งการเชิงนโยบาย</h2>
+          <p class="lead">แดชบอร์ดจำลองต่อไปนี้แสดงแนวคิดการจัดลำดับพื้นที่วิกฤตและการทดลองนโยบายแบบ What-if Analysis</p>
+        </div>
+        <div class="dashboard-shell reveal">
+          <div class="dash-window">
+            <div class="dash-top">
+              <div class="dash-brand"><i></i> GeoEquity Policy Dashboard</div>
+              <div class="dash-filters"><span class="dash-filter">จังหวัด: ชลบุรี</span><span class="dash-filter">ไตรมาส 2/2026</span><span class="dash-filter">Grid 1 km²</span></div>
             </div>
-
-            <div class="grid gap-3">
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <div class="flex gap-4">
-                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-mint/15 text-mint">✓</span>
-                  <div><h4 class="font-display font-bold text-white">ผู้กำหนดนโยบายระดับชาติ</h4><p class="mt-1 text-sm text-slate-400">สนับสนุน Precision Budgeting และลดการจัดสรรงบประมาณแบบหว่านแห</p></div>
-                </div>
+            <div class="dash-body">
+              <div class="dash-map">
+                <svg viewBox="0 0 720 520" preserveAspectRatio="xMidYMid slice" aria-label="แผนที่จำลองแสดงระดับความเปราะบาง">
+                  <defs>
+                    <pattern id="smallGrid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#ffffff" stroke-opacity=".6" stroke-width="1"/></pattern>
+                    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dceaf2"/><stop offset="1" stop-color="#cbdde8"/></linearGradient>
+                  </defs>
+                  <rect width="720" height="520" fill="url(#sea)"/>
+                  <path d="M85 70c110-48 203-34 278 12 55 34 99 16 153 33 81 25 105 85 75 150-26 55-78 80-102 130-26 52-47 104-111 118-93 20-173-25-263-31-77-6-116-65-88-122 25-51 76-82 64-140-13-63-54-109-6-150Z" fill="#c4d7ca" stroke="#9cb7a7" stroke-width="3"/>
+                  <rect width="720" height="520" fill="url(#smallGrid)" opacity=".75"/>
+                  <g opacity=".93">
+                    <rect x="114" y="92" width="68" height="68" fill="#f56f76"/><rect x="182" y="92" width="68" height="68" fill="#f5b941"/><rect x="250" y="126" width="68" height="68" fill="#f56f76"/>
+                    <rect x="318" y="160" width="68" height="68" fill="#f5b941"/><rect x="386" y="194" width="68" height="68" fill="#24b67a"/><rect x="454" y="228" width="68" height="68" fill="#24b67a"/>
+                    <rect x="284" y="228" width="68" height="68" fill="#f56f76"/><rect x="216" y="262" width="68" height="68" fill="#f5b941"/><rect x="148" y="296" width="68" height="68" fill="#2d8cff"/>
+                    <rect x="352" y="296" width="68" height="68" fill="#f5b941"/><rect x="420" y="330" width="68" height="68" fill="#24b67a"/><rect x="488" y="364" width="68" height="68" fill="#2d8cff"/>
+                  </g>
+                  <g fill="none" stroke="#5a8097" stroke-width="5" stroke-linecap="round" opacity=".65"><path d="M70 390c150-25 205-125 352-120 92 3 130 38 221 5"/><path d="M186 65c48 98 40 181 111 264 49 58 107 69 145 134"/></g>
+                  <g fill="#ffffff" stroke="#1777e8" stroke-width="4"><circle cx="290" cy="227" r="9"/><circle cx="452" cy="335" r="9"/><circle cx="177" cy="158" r="9"/></g>
+                </svg>
+                <div class="map-overlay"><small>พื้นที่เร่งด่วนลำดับที่ 1</small><div class="score-row"><strong>82.4</strong><span>ความเปราะบางสูง</span></div></div>
               </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <div class="flex gap-4">
-                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-mint/15 text-mint">✓</span>
-                  <div><h4 class="font-display font-bold text-white">องค์กรปกครองส่วนท้องถิ่น</h4><p class="mt-1 text-sm text-slate-400">ใช้แดชบอร์ดเพื่อจัดลำดับพื้นที่และส่งความช่วยเหลือเชิงรุก</p></div>
-                </div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                <div class="flex gap-4">
-                  <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-mint/15 text-mint">✓</span>
-                  <div><h4 class="font-display font-bold text-white">ประชาชนกลุ่มเปราะบาง</h4><p class="mt-1 text-sm text-slate-400">เพิ่มโอกาสเข้าถึงสวัสดิการและบริการสาธารณะที่เหมาะสม</p></div>
-                </div>
-              </div>
+              <aside class="dash-side">
+                <div class="side-card"><h4>Vulnerability Priority Score</h4><p>จัดอันดับพื้นที่ตามความเร่งด่วนในการเข้าถึงสาธารณูปโภค</p><div class="bar"><i style="width:82%"></i></div></div>
+                <div class="side-card"><h4>Policy Simulation</h4><p>สร้างสถานีอนามัยใหม่ภายในรัศมี 5 กม.</p><div class="bar"><i style="width:67%"></i></div></div>
+                <div class="side-card"><h4>ผลลัพธ์คาดการณ์</h4><p>Accessibility Index ดีขึ้น 18% และพื้นที่เสี่ยงสูงลดลง 7 กริด</p><div class="legend"><div class="hi">สูง</div><div class="mid">กลาง</div><div class="low">ต่ำ</div></div></div>
+                <div class="side-card"><h4>Evidence-based Tracking</h4><p>เปรียบเทียบก่อน–หลังโครงการด้วยภาพถ่ายดาวเทียมและดัชนีเศรษฐกิจ</p><div class="bar"><i style="width:74%"></i></div></div>
+              </aside>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Methodology -->
-    <section id="methodology" class="bg-surface py-24 sm:py-28">
-      <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="reveal max-w-3xl">
-          <span class="section-kicker">ภาพถ่ายดาวเทียม</span>
-          <h2 class="font-display mt-4 text-3xl font-extrabold sm:text-4xl lg:text-5xl">กระบวนการ GeoAI ที่อธิบายง่าย และตรวจสอบได้</h2>
-          <p class="mt-5 max-w-2xl text-base leading-8 sm:text-lg">ระบบรวมข้อมูลภาพถ่ายดาวเทียม ข้อมูลแสงกลางคืน พื้นที่สีเขียว และการเข้าถึงบริการ ก่อนแปลงเป็นคะแนนความมั่งคั่งเชิงพื้นที่</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="eyebrow">Beneficiaries</div>
+          <h2>สร้างคุณค่าตั้งแต่ระดับนโยบาย<br>ลงไปถึงประชาชนที่อาจถูกมองข้าม</h2>
         </div>
-
-        <div class="mt-14 rounded-[30px] border border-blue-100 bg-white p-6 shadow-card sm:p-8 lg:p-10">
-          <div class="grid gap-6 md:grid-cols-4">
-            <div class="data-flow reveal relative text-center">
-              <div class="relative z-10 mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-primary ring-8 ring-white">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17.5V6.5l5-2.5 6 3 5-2.5v11L15 19l-6-3-5 1.5Z"/><path d="M9 4v12M15 7v12"/></svg>
-              </div>
-              <h3 class="font-display mt-4 font-bold">รวบรวมข้อมูล</h3>
-              <p class="mt-2 text-xs leading-6">THEOS-2, VIIRS, Sentinel-2 และ OSM</p>
-            </div>
-            <div class="data-flow reveal relative text-center">
-              <div class="relative z-10 mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-primary ring-8 ring-white">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="m7 15 3-3 2 2 3-4 2 2"/><circle cx="8" cy="9" r="1"/></svg>
-              </div>
-              <h3 class="font-display mt-4 font-bold">สกัดคุณลักษณะ</h3>
-              <p class="mt-2 text-xs leading-6">แปลงภาพเป็น Feature Embeddings ด้วย CNN</p>
-            </div>
-            <div class="data-flow reveal relative text-center">
-              <div class="relative z-10 mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-primary ring-8 ring-white">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="m7.8 7 3.2 8M16.2 7 13 15M8 6h8"/></svg>
-              </div>
-              <h3 class="font-display mt-4 font-bold">รวมหลายมิติ</h3>
-              <p class="mt-2 text-xs leading-6">ผสานข้อมูลภาพและข้อมูลตารางเข้าด้วยกัน</p>
-            </div>
-            <div class="data-flow reveal relative text-center">
-              <div class="relative z-10 mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-primary ring-8 ring-white">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/><path d="M2 19h22"/></svg>
-              </div>
-              <h3 class="font-display mt-4 font-bold">พยากรณ์คะแนน</h3>
-              <p class="mt-2 text-xs leading-6">สร้าง Wealth Index และ Priority Score</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <article class="soft-card reveal rounded-3xl p-6">
-            <div class="mb-5 h-1.5 w-14 rounded-full bg-primary"></div>
-            <span class="text-xs font-bold tracking-wider text-primary">OPTICAL</span>
-            <h3 class="font-display mt-2 text-lg font-bold">THEOS-2</h3>
-            <p class="mt-3 text-sm leading-7">ใช้ภาพถ่ายความละเอียดสูงเพื่อตรวจสอบความหนาแน่นสิ่งปลูกสร้าง รูปแบบเมือง และลักษณะทางกายภาพของที่อยู่อาศัย</p>
-          </article>
-          <article class="soft-card reveal rounded-3xl p-6">
-            <div class="mb-5 h-1.5 w-14 rounded-full bg-indigo-500"></div>
-            <span class="text-xs font-bold tracking-wider text-indigo-600">NIGHT LIGHT</span>
-            <h3 class="font-display mt-2 text-lg font-bold">VIIRS</h3>
-            <p class="mt-3 text-sm leading-7">ใช้ความเข้มแสงยามค่ำคืนเป็นตัวแทนระดับกิจกรรมทางเศรษฐกิจ การใช้พลังงาน และการเข้าถึงไฟฟ้า</p>
-          </article>
-          <article class="soft-card reveal rounded-3xl p-6">
-            <div class="mb-5 h-1.5 w-14 rounded-full bg-cyan-500"></div>
-            <span class="text-xs font-bold tracking-wider text-cyan-700">MULTISPECTRAL</span>
-            <h3 class="font-display mt-2 text-lg font-bold">Sentinel-2</h3>
-            <p class="mt-3 text-sm leading-7">คำนวณ NDVI และ NDBI เพื่อวิเคราะห์พื้นที่สีเขียว พื้นที่สิ่งปลูกสร้าง และคุณภาพสภาพแวดล้อมของชุมชน</p>
-          </article>
-          <article class="soft-card reveal rounded-3xl p-6">
-            <div class="mb-5 h-1.5 w-14 rounded-full bg-mint"></div>
-            <span class="text-xs font-bold tracking-wider text-emerald-700">ACCESSIBILITY</span>
-            <h3 class="font-display mt-2 text-lg font-bold">OpenStreetMap</h3>
-            <p class="mt-3 text-sm leading-7">วัดระยะและการเข้าถึงโรงพยาบาล โรงเรียน ระบบคมนาคม และโครงสร้างพื้นฐานที่จำเป็น</p>
-          </article>
-        </div>
-
-        <div class="mt-12 grid gap-6 lg:grid-cols-2">
-          <article class="reveal rounded-[28px] border border-blue-100 bg-white p-7 shadow-card sm:p-8">
-            <div class="flex items-start gap-4">
-              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 font-display font-extrabold text-primary">01</span>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-primary">Image Feature Extraction</span>
-                <h3 class="font-display mt-2 text-xl font-bold">สกัดรูปแบบจากภาพถ่ายดาวเทียม</h3>
-              </div>
-            </div>
-            <p class="mt-5 text-sm leading-7">แบ่งพื้นที่เป็นกริดขนาด 1 × 1 ตารางกิโลเมตร แล้วใช้โมเดล CNN เช่น ResNet-50 ที่ผ่าน Transfer Learning เพื่อแปลงลักษณะทางกายภาพเป็น Feature Vectors หรือ Embeddings</p>
-            <div class="mt-5 flex flex-wrap gap-2"><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">ResNet-50</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Feature Embedding</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Transfer Learning</span></div>
-          </article>
-
-          <article class="reveal rounded-[28px] border border-blue-100 bg-white p-7 shadow-card sm:p-8">
-            <div class="flex items-start gap-4">
-              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 font-display font-extrabold text-emerald-600">02</span>
-              <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600">Multi-modal Data Fusion</span>
-                <h3 class="font-display mt-2 text-xl font-bold">รวมภาพกับข้อมูลเชิงตาราง</h3>
-              </div>
-            </div>
-            <p class="mt-5 text-sm leading-7">นำ Feature Vectors มารวมกับค่าความเข้มแสงกลางคืนและดัชนีการเข้าถึงบริการ แล้วส่งเข้า XGBoost หรือ Random Forest Regressor เพื่อพยากรณ์คะแนนดัชนีความมั่งคั่ง</p>
-            <div class="mt-5 flex flex-wrap gap-2"><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">XGBoost</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Random Forest</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Data Fusion</span></div>
-          </article>
-        </div>
-
-        <div class="reveal mt-6 rounded-[28px] bg-ink p-7 text-white shadow-soft sm:p-9">
-          <div class="grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-            <div>
-              <span class="inline-flex rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-blue-200">QUALITY ASSURANCE</span>
-              <h3 class="font-display mt-4 text-2xl font-bold">สอบเทียบกับข้อมูลจริง</h3>
-            </div>
-            <p class="text-sm leading-8 text-slate-300">ใช้ข้อมูล จปฐ. และ TPMAP ระดับหมู่บ้านหรือตำบลเป็น Ground Truth Labels พร้อมทดสอบด้วย K-Fold Cross Validation และวัดผลผ่านค่า R² และ RMSE เพื่อประเมินความแม่นยำก่อนนำไปใช้ในพื้นที่ที่ยังไม่มีการสำรวจภาคสนาม</p>
-          </div>
+        <div class="benefit-list">
+          <article class="benefit-card reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M6 21V10m12 11V10M4 10h16L12 3 4 10Zm5 4h6m-6 4h6"/></svg></div><h3>ผู้กำหนดนโยบายระดับชาติ</h3><p>เปลี่ยนการจัดสรรงบแบบหว่านแหให้เป็นการลงทุนแบบชี้เป้า ใช้งบได้คุ้มค่าและตรวจสอบเหตุผลได้</p></article>
+          <article class="benefit-card reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h16M6 20V8l6-4 6 4v12M9 12h6M9 16h6"/></svg></div><h3>องค์กรปกครองส่วนท้องถิ่น</h3><p>มี Dashboard อัปเดตสถานการณ์เพื่อวางแผนสาธารณูปโภคและจัดลำดับชุมชนที่ต้องได้รับความช่วยเหลือก่อน</p></article>
+          <article class="benefit-card reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8.5-1 2 2 4-4"/></svg></div><h3>ประชากรเปราะบางและประชากรแฝง</h3><p>เพิ่มโอกาสเข้าถึงทรัพยากรของรัฐ ลดการตกหล่นจากตาข่ายสวัสดิการ และทำให้ “พื้นที่จริง” ถูกมองเห็น</p></article>
         </div>
       </div>
     </section>
 
-    <!-- Implementation -->
-    <section id="implementation" class="py-24 sm:py-28">
-      <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <span class="section-kicker">ผลลัพธ์</span>
-          <h2 class="font-display mt-4 text-3xl font-extrabold sm:text-4xl lg:text-5xl">ผลลัพธ์ที่พร้อมใช้กับการตัดสินใจจริง</h2>
-          <p class="mx-auto mt-5 max-w-2xl text-base leading-8 sm:text-lg">ข้อมูลทุกชั้นถูกออกแบบให้เชื่อมต่อกับระบบ GIS เดิม และนำไปใช้จัดลำดับพื้นที่ วางแผนโครงสร้างพื้นฐาน และประเมินนโยบายได้</p>
+    <section class="section section-soft">
+      <div class="container policy-grid">
+        <div class="policy-sticky reveal">
+          <div class="eyebrow">Policy Implementation</div>
+          <h2>3 เส้นทางนำไปใช้จริง</h2>
+          <p class="lead">GeoEquity วางตำแหน่งเป็น “ปลั๊กอินจากอวกาศ” ที่เสริมระบบข้อมูลภาครัฐเดิม ไม่ใช่แทนที่ระบบที่มีอยู่</p>
         </div>
-
-        <div class="mt-14 grid gap-5 lg:grid-cols-3">
-          <article class="soft-card reveal rounded-[28px] p-7">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-primary">
-              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m4 7 8-4 8 4-8 4-8-4Z"/><path d="m4 12 8 4 8-4M4 17l8 4 8-4"/></svg>
-            </div>
-            <h3 class="font-display mt-5 text-xl font-bold">Micro-level Wealth Index</h3>
-            <p class="mt-3 text-sm leading-7">ชั้นข้อมูลดัชนีความยากจนและความมั่งคั่งระดับ 1 ตร.กม. ในรูปแบบ GeoJSON หรือ Shapefile พร้อมนำเข้าสู่ระบบ GIS</p>
-          </article>
-
-          <article class="soft-card reveal rounded-[28px] p-7">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-amber-600">
-              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v4M12 17h.01"/></svg>
-            </div>
-            <h3 class="font-display mt-5 text-xl font-bold">Vulnerability Priority Score</h3>
-            <p class="mt-3 text-sm leading-7">คะแนนจัดลำดับความจำเป็นเร่งด่วน ช่วยให้หน่วยงานท้องถิ่นเลือกพื้นที่ที่ควรได้รับความช่วยเหลือก่อนอย่างเป็นระบบ</p>
-          </article>
-
-          <article class="soft-card reveal rounded-[28px] p-7">
-            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-emerald-600">
-              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/><path d="M2 19h22"/></svg>
-            </div>
-            <h3 class="font-display mt-5 text-xl font-bold">Policy Simulation Matrix</h3>
-            <p class="mt-3 text-sm leading-7">แดชบอร์ดจำลองผลกระทบของการสร้างถนน โรงพยาบาล หรือบริการสาธารณะต่อคุณภาพชีวิตและเศรษฐกิจในพื้นที่เป้าหมาย</p>
-          </article>
-        </div>
-
-        <div class="mt-12 grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-start">
-          <div class="reveal lg:sticky lg:top-28">
-            <span class="text-xs font-bold uppercase tracking-widest text-primary">POLICY USE CASES</span>
-            <h3 class="font-display mt-3 text-2xl font-bold sm:text-3xl">จากข้อมูล สู่การบริหารราชการที่แม่นยำขึ้น</h3>
-            <p class="mt-4 leading-8">GeoEquity ไม่ได้จบที่การสร้างแผนที่ แต่เปลี่ยนผลวิเคราะห์ให้เป็นเครื่องมือสำหรับกำหนดงบประมาณ วางผังเมือง และติดตามผลลัพธ์ของโครงการรัฐ</p>
-          </div>
-
-          <div class="grid gap-4">
-            <article class="soft-card reveal rounded-3xl p-6 sm:p-7">
-              <div class="flex gap-5">
-                <span class="font-display text-3xl font-extrabold text-blue-200">01</span>
-                <div><h4 class="font-display text-lg font-bold">Precision Budgeting</h4><p class="mt-2 text-sm leading-7">ช่วยให้สำนักงบประมาณพิจารณาความจำเป็นในระดับพื้นที่ย่อย แทนการจัดสรรตามค่าเฉลี่ยหรือจำนวนประชากรเพียงอย่างเดียว</p></div>
-              </div>
-            </article>
-            <article class="soft-card reveal rounded-3xl p-6 sm:p-7">
-              <div class="flex gap-5">
-                <span class="font-display text-3xl font-extrabold text-blue-200">02</span>
-                <div><h4 class="font-display text-lg font-bold">Proactive Regional Planning</h4><p class="mt-2 text-sm leading-7">สนับสนุนการวางผังเมืองและเลือกตำแหน่งโครงสร้างพื้นฐานให้เข้าถึงพื้นที่ที่ขาดแคลนได้ตรงจุดมากขึ้น</p></div>
-              </div>
-            </article>
-            <article class="soft-card reveal rounded-3xl p-6 sm:p-7">
-              <div class="flex gap-5">
-                <span class="font-display text-3xl font-extrabold text-blue-200">03</span>
-                <div><h4 class="font-display text-lg font-bold">Evidence-based Evaluation</h4><p class="mt-2 text-sm leading-7">เปรียบเทียบข้อมูลก่อนและหลังโครงการรัฐ เพื่อประเมินว่าเม็ดเงินและโครงสร้างพื้นฐานช่วยยกระดับเศรษฐกิจฐานรากได้จริงเพียงใด</p></div>
-              </div>
-            </article>
-          </div>
+        <div class="policy-list">
+          <article class="policy-item reveal"><div class="policy-no">01</div><div><h3>Precision Budgeting</h3><p>ใช้ดัชนีความต้องการระดับไมโครประกอบการอนุมัติงบลงทุน ลดการพึ่งพาสัดส่วนประชากรหรือค่าเฉลี่ยระดับจังหวัดเพียงอย่างเดียว</p></div></article>
+          <article class="policy-item reveal"><div class="policy-no">02</div><div><h3>Proactive Planning</h3><p>จำลองจุดก่อสร้างถนน โรงเรียน หรือสถานีอนามัย เพื่อกระจายโครงสร้างพื้นฐานไปยังพื้นที่ที่ตกหล่นอย่างมีหลักฐานรองรับ</p></div></article>
+          <article class="policy-item reveal"><div class="policy-no">03</div><div><h3>Evidence-based Evaluation</h3><p>ติดตามภาพถ่ายดาวเทียมและดัชนีเศรษฐกิจก่อน–หลังดำเนินโครงการ เพื่อวัดผลสัมฤทธิ์ของเม็ดเงินลงทุนอย่างเป็นระบบ</p></div></article>
         </div>
       </div>
     </section>
 
-    <!-- Impact -->
-    <section id="impact" class="px-5 pb-24 sm:pb-28 lg:px-8">
-      <div class="reveal mx-auto max-w-7xl overflow-hidden rounded-[34px] bg-gradient-to-br from-[#0b1530] via-[#112657] to-[#123c55] p-7 text-white shadow-soft sm:p-10 lg:p-14">
-        <div class="grid gap-10 lg:grid-cols-[1fr_.9fr] lg:items-center">
+    <section class="section section-dark" id="roadmap">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="eyebrow" style="color:var(--cyan-400)">MVP Execution Plan</div>
+          <h2>แผนทำ Proof of Concept<br>ภายในช่วง Hackathon</h2>
+          <p class="lead">จำกัดขอบเขตให้ชัด เลือกข้อมูลที่เข้าถึงได้ และทุ่มทรัพยากรให้เห็นภาพการใช้งานจริง</p>
+        </div>
+        <div class="timeline">
+          <article class="phase reveal"><div class="phase-dot">01</div><h3>Sandbox Scoping</h3><p>เลือกพื้นที่นำร่อง 1 จังหวัด เช่น ชลบุรีหรือภูเก็ต เพื่อสะท้อนปัญหาประชากรแฝงในจังหวัดเศรษฐกิจ</p></article>
+          <article class="phase reveal"><div class="phase-dot">02</div><h3>Agile Data Engineering</h3><p>ใช้ Google Earth Engine จัดการ VIIRS และ Sentinel-2 พร้อมดึงข้อมูลโครงสร้างพื้นฐานจาก OSM</p></article>
+          <article class="phase reveal"><div class="phase-dot">03</div><h3>Fast Modeling</h3><p>ใช้ Pre-trained CNN และ XGBoost เพื่อสร้างความสัมพันธ์ระหว่างข้อมูลภาพกับดัชนีความยากจนเบื้องต้น</p></article>
+          <article class="phase reveal"><div class="phase-dot">04</div><h3>Dashboard Visualization</h3><p>พัฒนา Mockup Policy Dashboard ให้กรรมการเห็น Flow การสั่งการและผลลัพธ์ที่ Actionable อย่างเป็นรูปธรรม</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container">
+        <div class="closing-card reveal">
           <div>
-            <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">SCALABLE BY DESIGN</span>
-            <h2 class="font-display mt-5 text-3xl font-extrabold sm:text-4xl">เริ่มจากพื้นที่นำร่อง และขยายผลได้ทั่วประเทศ</h2>
-            <p class="mt-5 max-w-2xl leading-8 text-slate-300">การใช้ข้อมูลเปิดร่วมกับ THEOS-2 และกระบวนการประมวลผลอัตโนมัติ ช่วยลดการพึ่งพาการสำรวจซ้ำทุกพื้นที่ และรองรับการขยายผลครอบคลุมทั้ง 77 จังหวัดหลังผ่านการทดสอบในพื้นที่นำร่อง</p>
+            <div class="eyebrow" style="color:var(--cyan-400)">Conclusion</div>
+            <h2>เปลี่ยนภาพดาวเทียม<br>ให้กลายเป็นนโยบายลดความเหลื่อมล้ำ</h2>
+            <p>GeoEquity เสริมศักยภาพระบบข้อมูลภาครัฐด้วยมุมมองจากอวกาศ เพื่อให้การช่วยเหลือเข้าถึงชุมชนที่ถูกซ่อนอยู่หลังตัวเลขเฉลี่ยได้เร็วขึ้น แม่นยำขึ้น และเป็นธรรมขึ้น</p>
           </div>
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><strong class="font-display block text-3xl font-extrabold text-white">77</strong><span class="mt-1 block text-xs text-slate-400">จังหวัดเป้าหมาย</span></div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><strong class="font-display block text-3xl font-extrabold text-white">1 km²</strong><span class="mt-1 block text-xs text-slate-400">ระดับความละเอียด</span></div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><strong class="font-display block text-3xl font-extrabold text-white">Quarterly</strong><span class="mt-1 block text-xs text-slate-400">รอบการอัปเดต</span></div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5"><strong class="font-display block text-3xl font-extrabold text-mint">Actionable</strong><span class="mt-1 block text-xs text-slate-400">พร้อมใช้เชิงนโยบาย</span></div>
-          </div>
+          <a class="btn btn-primary" href="geoequity_project_plan.pdf" target="_blank" rel="noopener">เปิดข้อเสนอฉบับเต็ม</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-slate-200 bg-slate-50 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-      <div class="flex items-center gap-3">
-        <span class="grid h-10 w-10 place-items-center rounded-xl bg-ink text-white">
-          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17.5V6.8a1 1 0 0 1 .55-.9L9 3.7l6 3 4.45-2.2A1 1 0 0 1 21 5.4v10.7a1 1 0 0 1-.55.9L15 19.7l-6-3-3.55 1.7A1 1 0 0 1 4 17.5Z"/><path d="M9 3.7v13M15 6.7v13"/></svg>
-        </span>
-        <div><strong class="font-display block text-base font-extrabold">GeoEquity Team</strong><span class="text-xs text-slate-500">Actionable Geo-Intelligence for Thailand</span></div>
-      </div>
-      <p class="text-xs text-slate-500">© 2026 ออกแบบสำหรับการแข่งขัน GeoHackathon 2026</p>
-    </div>
+  <footer>
+    <div class="container footer-inner"><span>© 2026 GeoEquity · GeoHackathon Project Proposal</span><span>Actionable Geo-Intelligence & Precision Budgeting</span></div>
   </footer>
 
-  <button id="back-to-top" class="pointer-events-none fixed bottom-5 right-5 z-40 grid h-12 w-12 translate-y-5 place-items-center rounded-2xl bg-ink text-white opacity-0 shadow-xl transition hover:bg-primary" aria-label="กลับขึ้นด้านบน">
-    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 15 6-6 6 6" /></svg>
-  </button>
-
   <script>
-    const menuButton = document.getElementById('menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuOpenIcon = document.getElementById('menu-open-icon');
-    const menuCloseIcon = document.getElementById('menu-close-icon');
+    const topbar = document.getElementById('topbar');
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
 
-    const closeMenu = () => {
-      mobileMenu.classList.add('hidden');
-      menuOpenIcon.classList.remove('hidden');
-      menuCloseIcon.classList.add('hidden');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.setAttribute('aria-label', 'เปิดเมนู');
-    };
-
-    menuButton.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      menuOpenIcon.classList.toggle('hidden');
-      menuCloseIcon.classList.toggle('hidden');
-      menuButton.setAttribute('aria-expanded', String(!isOpen));
-      menuButton.setAttribute('aria-label', isOpen ? 'เปิดเมนู' : 'ปิดเมนู');
+    window.addEventListener('scroll', () => {
+      topbar.classList.toggle('scrolled', window.scrollY > 24);
     });
 
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
 
-    const revealObserver = new IntersectionObserver((entries) => {
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          revealObserver.unobserve(entry.target);
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: .12 });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    const progress = document.getElementById('scroll-progress');
-    const backToTop = document.getElementById('back-to-top');
-
-    const updateScrollUI = () => {
-      const scrollTop = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = `${maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0}%`;
-
-      const visible = scrollTop > 500;
-      backToTop.classList.toggle('opacity-0', !visible);
-      backToTop.classList.toggle('translate-y-5', !visible);
-      backToTop.classList.toggle('pointer-events-none', !visible);
-    };
-
-    window.addEventListener('scroll', updateScrollUI, { passive: true });
-    window.addEventListener('resize', updateScrollUI);
-    updateScrollUI();
-
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
