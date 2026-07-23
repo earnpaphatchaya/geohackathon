@@ -248,7 +248,38 @@
       .kpi-row{grid-template-columns:1fr;gap:4px}.kpi-row.head{display:none}.timeline{grid-template-columns:1fr}.closing-card{padding:29px}.footer-inner{display:block;text-align:center}.formula{font-size:16px}.judge-grid{grid-template-columns:1fr}
     }
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-  </style>
+    
+    /* Mobile specific tweaks added */
+    @media (max-width: 480px) {
+        .hero h1 { font-size: 40px; }
+        .hero-sub { font-size: 16px; }
+        .btn { padding: 0 16px; min-height: 48px; width: 100%; justify-content: center; }
+        .hero-actions { flex-direction: column; }
+        .orbit { width: 300px; height: 300px; }
+        .visual-card { inset: 10px 0; }
+        .map-kpi strong { font-size: 24px; }
+        .summary-card { padding: 20px; }
+        .rubric-grid, .cards-3, .source-grid, .safeguard-grid { grid-template-columns: 1fr; gap: 16px; }
+        .index-grid, .validation-grid, .impact-grid { grid-template-columns: 1fr; }
+        .formula { font-size: 14px; padding: 15px; }
+        .pipe-card { padding: 16px; }
+        .pipeline { grid-template-columns: 1fr; gap: 16px;}
+        .pipe-card::after { display: none !important; }
+        .dash-top { flex-direction: column; align-items: stretch; }
+        .dash-controls { flex-direction: column; width: 100%; }
+        .control select, .control input { width: 100%; }
+        .map-overlay { position: relative; left: 0; top: 0; width: 100%; border-radius: 0; box-shadow: none; border-bottom: 1px solid #e3ebf2; }
+        .dash-map { min-height: auto; }
+        .timeline { grid-template-columns: 1fr; }
+        .phase::before { display:none; }
+        .phase { padding: 0; margin-bottom: 30px; }
+        .judge-grid { grid-template-columns: 1fr; }
+        .closing-card { padding: 20px; flex-direction: column; text-align: center; }
+        .closing-card a { width: 100%; }
+        .topbar { padding: 10px 0; }
+        .brand span { font-size: 16px; }
+    }
+    </style>
 </head>
 <body>
   <header class="topbar" id="topbar">
@@ -280,7 +311,7 @@
         <div>
           <div class="hero-kicker"><span class="pulse-dot"></span> GEOHACKATHON 2026 · COMPETITION-READY PROTOTYPE</div>
           <h1>Geo<span>Equity</span></h1>
-          <p class="hero-sub">ระบบสนับสนุนการตัดสินใจเชิงพื้นที่ด้วย GeoAI เพื่อค้นหา “พื้นที่ที่อาจถูกมองข้าม” จัดลำดับการลงพื้นที่ตรวจสอบ และช่วยวางแผนงบประมาณอย่างโปร่งใส</p>
+          <p class="hero-sub">ระบบ GeoAI คัดกรองพื้นที่ขาดโอกาสเพื่อการจัดสรรทรัพยากรเชิงรุกและเป็นธรรม “เปลี่ยนข้อมูลจากอวกาศ ให้กลายเป็นลำดับการตัดสินใจบนพื้นดิน”</p>
           <div class="hero-trust">
             <span class="badge dark">Human-in-the-loop</span>
             <span class="badge dark">Spatial Validation</span>
@@ -354,9 +385,9 @@
           <p class="lead">ข้อมูลภาครัฐมีคุณค่าอยู่แล้ว แต่ความละเอียด เวลาอัปเดต และการครอบคลุมประชากรเคลื่อนย้ายยังเป็นข้อจำกัดสำหรับการตัดสินใจเชิงรุก</p>
         </div>
         <div class="cards-3">
-          <article class="info-card card reveal"><div class="icon-box red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/><path d="m4 7 6-4 6 7 4-3"/></svg></div><h3>ค่าเฉลี่ยบดบังพื้นที่ย่อย</h3><p>GPP หรือสถิติระดับจังหวัดอาจดูดี ขณะที่บางชุมชนภายในจังหวัดยังเข้าถึงบริการพื้นฐานได้ยาก</p></article>
-          <article class="info-card card reveal"><div class="icon-box amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg></div><h3>ข้อมูลอัปเดตไม่ทันเหตุการณ์</h3><p>การสำรวจรายครัวเรือนต้องใช้คนและเวลา จึงไม่เหมาะกับการเฝ้าระวังความเปลี่ยนแปลงระหว่างรอบสำรวจ</p></article>
-          <article class="info-card card reveal"><div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/></svg></div><h3>ประชากรเคลื่อนย้ายตกหล่น</h3><p>ผู้ย้ายถิ่นหรือชุมชนไม่เป็นทางการอาจไม่สะท้อนในทะเบียนของพื้นที่ ทำให้บริการและงบประมาณไม่ตรงสภาพจริง</p></article>
+          <article class="info-card card reveal"><div class="icon-box red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9m6 10V5m6 14v-7m4 7H2"/><path d="m4 7 6-4 6 7 4-3"/></svg></div><h3>Paradox of Averages</h3><p>จังหวัดดูมีฐานะดี แต่ความเปราะบางภายในพื้นที่ถูกค่าเฉลี่ยกลบ</p></article>
+          <article class="info-card card reveal"><div class="icon-box amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg></div><h3>Data Lag & Coverage Gap</h3><p>ข้อมูลสำรวจอาจไม่ทันการเปลี่ยนแปลงทางเศรษฐกิจ และประชากรแฝงอาจตกหล่น</p></article>
+          <article class="info-card card reveal"><div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6m3-3h-6"/></svg></div><h3>Budget Mismatch</h3><p>งบประมาณอาจถูกจัดสรรตามโควตามากกว่าความจำเป็นเชิงพื้นที่</p></article>
         </div>
       </div>
     </section>
@@ -396,10 +427,10 @@
           <p class="lead">PoC ไม่ควรหยุดเพราะรอข้อมูลความละเอียดสูง จึงออกแบบให้เริ่มจากข้อมูลเปิดและเพิ่ม THEOS-2 เมื่อได้รับสิทธิ์</p>
         </div>
         <div class="source-grid">
-          <article class="source-card reveal"><div class="source-no">01 · NIGHT LIGHT</div><h3>VIIRS</h3><p>ตัวแทนกิจกรรมยามค่ำคืน ใช้ร่วมกับบริบทพื้นที่ ไม่ตีความเป็นรายได้โดยตรง</p><div class="source-meta"><span>ECONOMIC PROXY</span><span class="source-status">พร้อมใช้</span></div></article>
-          <article class="source-card reveal"><div class="source-no">02 · MULTISPECTRAL</div><h3>Sentinel-2</h3><p>พื้นที่สีเขียว น้ำ การใช้ที่ดิน และการเปลี่ยนแปลงสภาพแวดล้อมรอบชุมชน</p><div class="source-meta"><span>ENVIRONMENT</span><span class="source-status">พร้อมใช้</span></div></article>
-          <article class="source-card reveal"><div class="source-no">03 · ACCESSIBILITY</div><h3>OpenStreetMap</h3><p>คำนวณเวลาเดินทางและระยะทางถึงโรงเรียน โรงพยาบาล ถนน และแหล่งบริการ</p><div class="source-meta"><span>SERVICE ACCESS</span><span class="source-status">พร้อมใช้</span></div></article>
-          <article class="source-card reveal"><div class="source-no">04 · HIGH RESOLUTION</div><h3>THEOS-2</h3><p>เพิ่มรายละเอียดสิ่งปลูกสร้างและลักษณะกายภาพ เมื่อได้รับข้อมูลและสิทธิ์ใช้งานที่เหมาะสม</p><div class="source-meta"><span>ENHANCEMENT</span><span class="source-status">ตามสิทธิ์ข้อมูล</span></div></article>
+          <article class="source-card reveal"><div class="source-no">01 · NIGHT LIGHT</div><h3>VIIRS Nighttime Light</h3><p>กิจกรรมทางเศรษฐกิจ ความต่อเนื่องและแนวโน้มของแสง (463.83 ม.)</p><div class="source-meta"><span>ECONOMIC PROXY</span><span class="source-status">พร้อมใช้</span></div></article>
+          <article class="source-card reveal"><div class="source-no">02 · MULTISPECTRAL</div><h3>Sentinel-2</h3><p>NDVI, NDBI, Built-up และบริบทสิ่งแวดล้อม (10/20/60 ม.)</p><div class="source-meta"><span>ENVIRONMENT</span><span class="source-status">พร้อมใช้</span></div></article>
+          <article class="source-card reveal"><div class="source-no">03 · ACCESSIBILITY</div><h3>OpenStreetMap</h3><p>เวลาเดินทาง ความหนาแน่นถนน โรงพยาบาล และบริการสาธารณะ</p><div class="source-meta"><span>SERVICE ACCESS</span><span class="source-status">พร้อมใช้</span></div></article>
+          <article class="source-card reveal"><div class="source-no">04 · HIGH RESOLUTION</div><h3>THEOS-2</h3><p>PAN 0.5 ม.; Multispectral 2 ม. ใช้ดูลักษณะสิ่งปลูกสร้าง ความหนาแน่น และรูปแบบการตั้งถิ่นฐาน</p><div class="source-meta"><span>ENHANCEMENT</span><span class="source-status">ตามสิทธิ์ข้อมูล</span></div></article>
         </div>
         <div class="availability">
           <div class="availability-card"><strong>Fallback Strategy</strong><span>หากไม่มี THEOS-2 ใช้ Sentinel-2 + OSM + VIIRS สร้าง Baseline ที่รันได้จริง</span></div>
