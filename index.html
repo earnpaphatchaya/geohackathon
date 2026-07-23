@@ -55,6 +55,7 @@
     button,input,select{font:inherit}
     button{cursor:pointer}
     :focus-visible{outline:3px solid rgba(53,213,230,.55);outline-offset:3px}
+    
     .container{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
     .section{padding:100px 0;position:relative}
     .section-soft{background:var(--surface)}
@@ -92,7 +93,6 @@
     }
     .note.warning{background:#fff8ea;border-left-color:var(--amber-500)}
 
-    /* Top navigation */
     .topbar{position:fixed;inset:0 0 auto;z-index:80;padding:17px 0;transition:.25s ease}
     .topbar.scrolled{padding:9px 0;background:rgba(3,16,29,.91);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:22px}
@@ -105,7 +105,6 @@
     .nav-cta{padding:10px 16px;border-radius:999px!important;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08)}
     .menu-btn{display:none;width:46px;height:46px;border:0;border-radius:14px;background:rgba(255,255,255,.10);color:#fff}
 
-    /* Hero */
     .hero{
       min-height:850px;padding:150px 0 92px;color:#fff;position:relative;overflow:hidden;
       background:radial-gradient(circle at 82% 20%,rgba(45,140,255,.30),transparent 31%),radial-gradient(circle at 53% 86%,rgba(53,213,230,.13),transparent 35%),linear-gradient(145deg,#020d18 0%,#061729 54%,#0b3558 100%)
@@ -125,6 +124,7 @@
     .btn-outline{color:var(--navy-800);border-color:#bdd5e7;background:#fff}
     .btn-sm{min-height:42px;padding:0 15px;border-radius:12px;font-size:13px}
     .hero-trust{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:34px}
+    
     .hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px}
     .metric{padding:17px 16px 15px;border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(255,255,255,.05);backdrop-filter:blur(12px)}
     .metric strong{display:block;font:800 clamp(20px,2.5vw,28px)/1 "Manrope",sans-serif;color:#fff;margin-bottom:7px}
